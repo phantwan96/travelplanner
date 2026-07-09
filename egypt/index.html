@@ -93,6 +93,15 @@
           <span>当前地图</span>
           <strong>全程路线</strong>
         </div>
+        <aside class="place-insight-card" id="placeInsightCard" aria-live="polite" hidden>
+          <button class="place-insight-close" id="placeInsightClose" type="button" aria-label="关闭地点卡片">
+            ×
+          </button>
+          <p class="place-insight-kicker" id="placeInsightKicker"></p>
+          <h2 id="placeInsightTitle"></h2>
+          <p id="placeInsightDescription"></p>
+          <p class="place-insight-reason" id="placeInsightReason"></p>
+        </aside>
         <div id="map" class="map" role="application" aria-label="埃及行程地图"></div>
         <div class="map-fallback" id="mapFallback" hidden>
           地图底图需要联网加载 OpenLayers 和 OpenStreetMap。当前仍可查看完整每日行程。

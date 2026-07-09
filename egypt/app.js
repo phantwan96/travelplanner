@@ -604,7 +604,14 @@ const fallback = document.querySelector("#mapFallback");
 const fitRouteButton = document.querySelector("#fitRouteButton");
 const activePlaceButton = document.querySelector("#activePlaceButton");
 const mapStatus = document.querySelector("#mapStatus strong");
+const placeInsightCard = document.querySelector("#placeInsightCard");
+const placeInsightClose = document.querySelector("#placeInsightClose");
+const placeInsightKicker = document.querySelector("#placeInsightKicker");
+const placeInsightTitle = document.querySelector("#placeInsightTitle");
+const placeInsightDescription = document.querySelector("#placeInsightDescription");
+const placeInsightReason = document.querySelector("#placeInsightReason");
 let currentRouteExtent = null;
+const pinIconCache = new Map();
 
 function escapeHtml(value) {
   return String(value)
@@ -741,11 +748,11 @@ function renderMap(plan) {
         date: day.date,
       });
       placeSource.addFeature(feature);
-      placeFeatures.set(place.id, { feature, dayId: day.day, place });
+      placeFeatures.set(place.id, { feature, dayId: day.day, day, place });
     });
   });
 
-  mapStatus.textContent = "全程路线";
+  clearActivePlace();
   scheduleMapRefresh({ fitRoute: true });
 }
 
@@ -784,18 +791,35 @@ function routeStyle() {
 
 function pointStyle(feature) {
   const active = feature.get("placeId") === activePlaceId;
+  if (active) {
+    return new ol.style.Style({
+      image: new ol.style.Icon({
+        src: getPinIconSrc(),
+        anchor: [0.5, 1],
+        scale: 1,
+      }),
+      text: new ol.style.Text({
+        text: feature.get("dayId"),
+        offsetY: -34,
+        fill: new ol.style.Fill({ color: getToken("--surface") }),
+        stroke: new ol.style.Stroke({ color: getToken("--accent-dark"), width: 3 }),
+        font: "800 13px sans-serif",
+      }),
+    });
+  }
+
   return new ol.style.Style({
     image: new ol.style.Circle({
-      radius: active ? 12 : 8,
+      radius: 8,
       fill: new ol.style.Fill({ color: getToken("--surface") }),
       stroke: new ol.style.Stroke({
-        color: active ? getToken("--route") : getToken("--accent"),
-        width: active ? 4 : 2,
+        color: getToken("--accent"),
+        width: 2,
       }),
     }),
     text: new ol.style.Text({
       text: feature.get("dayId"),
-      offsetY: active ? -24 : -20,
+      offsetY: -20,
       fill: new ol.style.Fill({ color: getToken("--ink") }),
       stroke: new ol.style.Stroke({ color: getToken("--surface"), width: 4 }),
       font: "700 12px sans-serif",
@@ -803,8 +827,61 @@ function pointStyle(feature) {
   });
 }
 
+function getPinIconSrc() {
+  const cacheKey = [getToken("--accent"), getToken("--accent-dark"), getToken("--surface")].join("|");
+  if (pinIconCache.has(cacheKey)) return pinIconCache.get(cacheKey);
+
+  const [accent, accentDark, surface] = cacheKey.split("|");
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="68" viewBox="0 0 54 68">
+      <path fill="${accent}" stroke="${accentDark}" stroke-width="4" d="M27 3C13.2 3 4 13.1 4 26.1C4 43.5 27 65 27 65S50 43.5 50 26.1C50 13.1 40.8 3 27 3Z"/>
+      <circle cx="27" cy="27" r="12" fill="${surface}" stroke="${accentDark}" stroke-width="3"/>
+    </svg>
+  `;
+  const src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  pinIconCache.set(cacheKey, src);
+  return src;
+}
+
 function getToken(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function buildPlaceInsight(entry) {
+  const { day, place } = entry;
+  const description = [day.morning, day.afternoon, day.evening].join(" ");
+  const reason = day.tags.length
+    ? `推荐理由：${day.tags.slice(0, 3).join(" / ")}，适合作为这一天「${day.title}」的重点锚点。`
+    : `推荐理由：它是这一天「${day.title}」里最容易帮你建立空间感的点。`;
+
+  return {
+    kicker: `${day.day} · ${day.date} · ${day.city}`,
+    title: place.name,
+    description,
+    reason,
+  };
+}
+
+function updatePlaceInsight(entry) {
+  const insight = buildPlaceInsight(entry);
+  placeInsightKicker.textContent = insight.kicker;
+  placeInsightTitle.textContent = insight.title;
+  placeInsightDescription.textContent = insight.description;
+  placeInsightReason.textContent = insight.reason;
+  placeInsightCard.hidden = false;
+}
+
+function clearActivePlace(options = {}) {
+  activePlaceId = null;
+  placeLayer?.changed();
+  document.querySelectorAll(".place-button.is-active").forEach((button) => button.classList.remove("is-active"));
+  document.querySelectorAll(".day-card.is-active").forEach((card) => card.classList.remove("is-active"));
+  placeInsightCard.hidden = true;
+  mapStatus.textContent = "全程路线";
+
+  if (options.fitRoute) {
+    scheduleMapRefresh({ fitRoute: true });
+  }
 }
 
 function activatePlace(placeId, options = {}) {
@@ -828,6 +905,7 @@ function activatePlace(placeId, options = {}) {
     duration: 450,
   });
   mapStatus.textContent = `${entry.place.name} · ${entry.dayId}`;
+  updatePlaceInsight(entry);
   if (options.scroll) {
     document.querySelector(`#${entry.dayId}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
@@ -866,8 +944,7 @@ timeline.addEventListener("click", (event) => {
 });
 
 fitRouteButton.addEventListener("click", () => {
-  mapStatus.textContent = "全程路线";
-  scheduleMapRefresh({ fitRoute: true });
+  clearActivePlace({ fitRoute: true });
 });
 
 activePlaceButton.addEventListener("click", () => {
@@ -877,6 +954,8 @@ activePlaceButton.addEventListener("click", () => {
   }
   scheduleMapRefresh({ fitRoute: true });
 });
+
+placeInsightClose.addEventListener("click", () => clearActivePlace());
 
 initMap();
 renderPlan(activePlanKey);
