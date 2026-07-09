@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>埃及 2026 十一行程路书</title>
+    <link rel="stylesheet" href="./vendor/ol.css" />
+    <link rel="stylesheet" href="./styles.css?v=5" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-copy">
+        <p class="kicker">Egypt Route Book</p>
+        <h1>2026 十一埃及路书</h1>
+        <p class="summary">
+          9 月 25 日下午落地开罗，10 月 6 日从埃及返程，10 月 7 日国内落地。三套方案都保留开罗、卢克索和红海，核心差异是阿布辛贝和转场节奏。
+        </p>
+      </div>
+      <div class="quick-facts" aria-label="行程摘要">
+        <div>
+          <span>出发</span>
+          <strong>北京 9/24 晚</strong>
+        </div>
+        <div>
+          <span>落地</span>
+          <strong>开罗 9/25 上午</strong>
+        </div>
+        <div>
+          <span>返程</span>
+          <strong>埃及 10/6</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="route-workspace">
+      <aside class="route-sidebar" aria-label="行程对比与每日路书">
+        <section class="control-panel" aria-label="行程对比工具">
+          <div class="panel-title">
+            <p>方案切换</p>
+            <h2 id="planTitle">A. 有阿布辛贝</h2>
+          </div>
+
+          <div class="segmented-control" role="tablist" aria-label="选择行程方案">
+            <button class="plan-tab is-active" type="button" data-plan="abu" role="tab" aria-selected="true">
+              有阿布辛贝
+            </button>
+            <button class="plan-tab" type="button" data-plan="lean" role="tab" aria-selected="false">
+              没阿布辛贝
+            </button>
+            <button class="plan-tab" type="button" data-plan="doubao" role="tab" aria-selected="false">
+              方案C
+            </button>
+          </div>
+
+          <p id="planSummary" class="plan-summary"></p>
+
+          <div class="score-grid" aria-label="方案指标">
+            <div>
+              <span>完整度</span>
+              <strong id="scoreCompleteness"></strong>
+            </div>
+            <div>
+              <span>松弛度</span>
+              <strong id="scoreEase"></strong>
+            </div>
+            <div>
+              <span>转场压力</span>
+              <strong id="scoreTransit"></strong>
+            </div>
+          </div>
+
+          <div class="route-note">
+            <span class="note-label">判断</span>
+            <p id="planVerdict"></p>
+          </div>
+        </section>
+
+        <section class="timeline-section" aria-label="完整每日行程">
+          <div class="section-heading">
+            <h2>每日行程</h2>
+            <p id="timelineIntro"></p>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+      </aside>
+
+      <section class="map-panel" aria-label="行程地图">
+        <div class="map-toolbar" aria-label="地图工具">
+          <button type="button" id="fitRouteButton">全程</button>
+          <button type="button" id="activePlaceButton">当前地点</button>
+        </div>
+        <div class="map-status" id="mapStatus">
+          <span>当前地图</span>
+          <strong>全程路线</strong>
+        </div>
+        <div id="map" class="map" role="application" aria-label="埃及行程地图"></div>
+        <div class="map-fallback" id="mapFallback" hidden>
+          地图底图需要联网加载 OpenLayers 和 OpenStreetMap。当前仍可查看完整每日行程。
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>地图使用 OpenLayers + OpenStreetMap，不需要外部地图 API key。点位和日期用于方案对比，订票前仍需按实际航班微调。</p>
+    </footer>
+
+    <script src="./vendor/ol.js"></script>
+    <script src="./app.js?v=5"></script>
+  </body>
+</html>
