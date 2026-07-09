@@ -273,55 +273,6 @@ h1 {
   min-height: 0;
 }
 
-.map-toolbar,
-.map-status {
-  position: absolute;
-  z-index: 500;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(14px);
-}
-
-.map-toolbar {
-  top: 14px;
-  left: 56px;
-  display: flex;
-  gap: 6px;
-  padding: 6px;
-}
-
-.map-toolbar button {
-  min-height: 34px;
-  border: 0;
-  border-radius: calc(var(--radius) - 2px);
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  font-weight: 800;
-  padding: 0 12px;
-  transition:
-    background 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.map-toolbar button:hover {
-  background: var(--surface-soft);
-}
-
-.map-toolbar button:active {
-  transform: translateY(1px);
-}
-
-.map-status {
-  top: 14px;
-  right: 14px;
-  padding: 10px 12px;
-  pointer-events: none;
-}
-
 .place-insight-card {
   position: absolute;
   z-index: 520;
@@ -403,19 +354,6 @@ h1 {
   line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-}
-
-.map-status span {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.map-status strong {
-  display: block;
-  margin-top: 4px;
-  font-size: 15px;
 }
 
 .map-fallback {
@@ -648,16 +586,6 @@ h1 {
 
   .map {
     height: 420px;
-  }
-
-  .map-toolbar {
-    left: 48px;
-  }
-
-  .map-status {
-    top: 62px;
-    left: 14px;
-    right: auto;
   }
 
   .place-insight-card {

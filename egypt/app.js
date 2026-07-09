@@ -601,9 +601,6 @@ const verdict = document.querySelector("#planVerdict");
 const intro = document.querySelector("#timelineIntro");
 const timeline = document.querySelector("#timeline");
 const fallback = document.querySelector("#mapFallback");
-const fitRouteButton = document.querySelector("#fitRouteButton");
-const activePlaceButton = document.querySelector("#activePlaceButton");
-const mapStatus = document.querySelector("#mapStatus strong");
 const placeInsightCard = document.querySelector("#placeInsightCard");
 const placeInsightClose = document.querySelector("#placeInsightClose");
 const placeInsightKicker = document.querySelector("#placeInsightKicker");
@@ -877,7 +874,6 @@ function clearActivePlace(options = {}) {
   document.querySelectorAll(".place-button.is-active").forEach((button) => button.classList.remove("is-active"));
   document.querySelectorAll(".day-card.is-active").forEach((card) => card.classList.remove("is-active"));
   placeInsightCard.hidden = true;
-  mapStatus.textContent = "全程路线";
 
   if (options.fitRoute) {
     scheduleMapRefresh({ fitRoute: true });
@@ -904,7 +900,6 @@ function activatePlace(placeId, options = {}) {
     zoom: Math.max(view.getZoom() || 7, 9),
     duration: 450,
   });
-  mapStatus.textContent = `${entry.place.name} · ${entry.dayId}`;
   updatePlaceInsight(entry);
   if (options.scroll) {
     document.querySelector(`#${entry.dayId}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -941,18 +936,6 @@ timeline.addEventListener("click", (event) => {
   const button = event.target.closest(".place-button");
   if (!button) return;
   activatePlace(button.dataset.placeId);
-});
-
-fitRouteButton.addEventListener("click", () => {
-  clearActivePlace({ fitRoute: true });
-});
-
-activePlaceButton.addEventListener("click", () => {
-  if (activePlaceId) {
-    activatePlace(activePlaceId);
-    return;
-  }
-  scheduleMapRefresh({ fitRoute: true });
 });
 
 placeInsightClose.addEventListener("click", () => clearActivePlace());
