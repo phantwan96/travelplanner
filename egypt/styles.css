@@ -273,6 +273,36 @@ h1 {
   min-height: 0;
 }
 
+.fit-route-button {
+  position: absolute;
+  z-index: 520;
+  top: 14px;
+  right: 14px;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-weight: 800;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.fit-route-button:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.fit-route-button:active {
+  transform: translateY(1px);
+}
+
 .place-insight-card {
   position: absolute;
   z-index: 520;

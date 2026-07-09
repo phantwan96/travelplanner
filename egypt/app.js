@@ -601,6 +601,7 @@ const verdict = document.querySelector("#planVerdict");
 const intro = document.querySelector("#timelineIntro");
 const timeline = document.querySelector("#timeline");
 const fallback = document.querySelector("#mapFallback");
+const fitRouteButton = document.querySelector("#fitRouteButton");
 const placeInsightCard = document.querySelector("#placeInsightCard");
 const placeInsightClose = document.querySelector("#placeInsightClose");
 const placeInsightKicker = document.querySelector("#placeInsightKicker");
@@ -609,6 +610,112 @@ const placeInsightDescription = document.querySelector("#placeInsightDescription
 const placeInsightReason = document.querySelector("#placeInsightReason");
 let currentRouteExtent = null;
 const pinIconCache = new Map();
+const placeInsights = {
+  开罗市区: {
+    description: "埃及首都的现实切面：尼罗河、老城区、车流和日常生活混在一起，适合用低强度方式进入旅行状态。",
+    reason: "推荐作为抵达后的缓冲点，先建立开罗的城市感，而不是一落地就冲重景点。",
+  },
+  开罗: {
+    description: "开罗是埃及旅行的交通和文化入口，古埃及遗产、伊斯兰城区和现代城市生活在这里叠在一起。",
+    reason: "适合作为行程开合点：既方便国际航班衔接，也能补采购、餐厅和城市散步。",
+  },
+  Zamalek: {
+    description: "尼罗河中 Gezira 岛上的使馆区与生活街区，咖啡馆、餐厅、树荫街道和河景都比较集中。",
+    reason: "推荐给抵达日或恢复日，安全感和松弛度相对更好，适合不赶景点地散步吃饭。",
+  },
+  GEM: {
+    description: "大埃及博物馆位于吉萨附近，是理解古埃及文明主线的最佳开场之一，适合先看文物再去遗址现场。",
+    reason: "推荐放在金字塔前后，能先建立时间线和审美框架，后面看神庙、墓室会更有上下文。",
+  },
+  吉萨金字塔群: {
+    description: "埃及最标志性的古王国遗址，包含胡夫、哈夫拉、孟卡拉三大金字塔和吉萨高原景观。",
+    reason: "第一次埃及几乎必去。建议早到并请靠谱导游，减少现场拉扯，把体力留给观看本身。",
+  },
+  狮身人面像: {
+    description: "吉萨高原的经典符号，身体为狮、头部为法老形象，和金字塔共同构成最具辨识度的埃及画面。",
+    reason: "推荐和吉萨金字塔同日顺路看，停留不用太久，但很适合作为金字塔日的视觉收束。",
+  },
+  Saqqara: {
+    description: "萨卡拉是孟菲斯古城墓葬区，阶梯金字塔在这里展开了埃及金字塔形制的早期实验。",
+    reason: "推荐给想看懂金字塔演化的人，比单看吉萨更完整，也能避开一点纯打卡感。",
+  },
+  Dahshur: {
+    description: "达舒尔以弯曲金字塔和红色金字塔闻名，游客密度通常低于吉萨，荒漠感更明显。",
+    reason: "推荐和 Saqqara 组合，能看到金字塔从实验走向成熟的过程，摄影和空间感都更好。",
+  },
+  "Philae Temple": {
+    description: "菲莱神庙位于阿斯旺水域中的岛上，以伊西斯崇拜和水上抵达体验著名，空间氛围很柔和。",
+    reason: "推荐作为阿斯旺核心点，船行、岛屿和神庙结合，节奏比大遗址日更舒展。",
+  },
+  "Nubian Museum": {
+    description: "努比亚博物馆展示尼罗河上游与努比亚文化，能补足埃及南部不只是法老神庙的一面。",
+    reason: "推荐给对文化层次敏感的人，看完会更理解阿斯旺、阿布辛贝和埃及南部的边境感。",
+  },
+  阿斯旺: {
+    description: "阿斯旺位于埃及南部，尼罗河、花岗岩、努比亚文化和更慢的城市节奏构成它的气质。",
+    reason: "推荐作为阿布辛贝和菲莱神庙的基地，也适合在高密度古迹之间换一口气。",
+  },
+  阿布辛贝: {
+    description: "拉美西斯二世在埃及南部修建的巨型岩窟神庙，正立面四尊坐像极具压迫感和纪念碑性。",
+    reason: "推荐给想要埃及文明高光的人。代价是早起和转场强度高，但视觉记忆点非常强。",
+  },
+  "Kom Ombo": {
+    description: "康翁波神庙临近尼罗河，罕见地同时供奉鳄鱼神索贝克和鹰神荷鲁斯，左右对称结构很特别。",
+    reason: "推荐作为阿斯旺到卢克索路上的中途点，不绕太多路，却能让转场日也有内容。",
+  },
+  Edfu: {
+    description: "埃德富的荷鲁斯神庙保存度很高，塔门、庭院和浮雕体系完整，适合理解托勒密时期神庙空间。",
+    reason: "推荐和 Kom Ombo 串联，能把尼罗河谷从南到北的神庙线补得更顺。",
+  },
+  卢克索: {
+    description: "卢克索是古底比斯所在地，东岸看神庙，西岸看王陵，是埃及文明线最密集的区域之一。",
+    reason: "推荐作为行程核心停留地，比开罗更适合沉浸式看古埃及遗址。",
+  },
+  帝王谷: {
+    description: "新王国时期法老陵墓集中地，墓室壁画和地下空间是理解古埃及来世观的关键现场。",
+    reason: "推荐请导游并挑重点墓室，不必追求数量；看懂几座比匆匆扫很多座更有价值。",
+  },
+  哈特谢普苏特神庙: {
+    description: "依山而建的阶梯式神庙，属于女法老哈特谢普苏特，建筑线条在卢克索西岸非常醒目。",
+    reason: "推荐和帝王谷同日看，能从墓葬空间切换到纪念建筑，视觉差异很强。",
+  },
+  门农巨像: {
+    description: "两尊巨大的阿蒙霍特普三世坐像，是原祭庙遗址残存的地标，通常作为西岸行程短暂停靠点。",
+    reason: "推荐顺路停 10-15 分钟，不必单独绕行，但很适合作为西岸尺度感的开场。",
+  },
+  "Medinet Habu": {
+    description: "拉美西斯三世的祭庙，浮雕保存较好，游客相对少，色彩和墙面叙事都值得慢看。",
+    reason: "推荐给状态好、想避开人群的人；它常被低估，但观感很扎实。",
+  },
+  Karnak: {
+    description: "卡纳克神庙群规模巨大，柱厅、方尖碑、圣湖和多代法老扩建痕迹构成复杂的宗教空间。",
+    reason: "推荐留足时间慢看，这是卢克索东岸的重头戏，不适合压缩成匆匆打卡。",
+  },
+  "Luxor Temple": {
+    description: "卢克索神庙位于市中心，傍晚到夜间灯光下氛围很好，和卡纳克之间有古代大道相连。",
+    reason: "推荐傍晚后去，光线更柔和，也能把卢克索的一天收束得更有仪式感。",
+  },
+  Dendera: {
+    description: "丹德拉的哈索尔神庙以天花板、浮雕和保存度著称，位置在卢克索以北，通常需要专门安排半日。",
+    reason: "推荐给不去阿斯旺但仍想增加神庙层次的方案；如果行程紧，它属于加分项而非刚需。",
+  },
+  红海度假区: {
+    description: "赫尔格达、Soma Bay、Makadi Bay 一带主打海边酒店、浮潜、潜水和恢复体力。",
+    reason: "推荐放在行程后段，用来消化开罗和卢克索的高密度古迹输入，让旅行不是一路硬冲。",
+  },
+  "Hurghada / Soma Bay": {
+    description: "赫尔格达更方便热闹，Soma Bay 更度假和安静，二者都适合作为红海休整基地。",
+    reason: "推荐根据酒店和潜水需求选择：想方便选 Hurghada，想躺平和海景体验选 Soma Bay。",
+  },
+  红海海岸: {
+    description: "红海海岸以清澈海水、珊瑚、浮潜和海边酒店为核心，重点不是景点数量而是恢复节奏。",
+    reason: "推荐至少留一个完整白天，不然红海会变成路过，而不是这趟行程的真正休息段。",
+  },
+  开罗机场: {
+    description: "开罗国际机场是埃及主要国际进出港，也常用于衔接阿斯旺、卢克索、红海等国内段。",
+    reason: "推荐给足缓冲时间，埃及转场变量不少，返程日不要把机场衔接压得太极限。",
+  },
+};
 
 function escapeHtml(value) {
   return String(value)
@@ -846,16 +953,16 @@ function getToken(name) {
 
 function buildPlaceInsight(entry) {
   const { day, place } = entry;
-  const description = [day.morning, day.afternoon, day.evening].join(" ");
-  const reason = day.tags.length
-    ? `推荐理由：${day.tags.slice(0, 3).join(" / ")}，适合作为这一天「${day.title}」的重点锚点。`
-    : `推荐理由：它是这一天「${day.title}」里最容易帮你建立空间感的点。`;
+  const insight = placeInsights[place.name] ?? {
+    description: `${place.name} 是 ${day.city} 这一天的关键停靠点，适合结合当天路线顺路安排。`,
+    reason: `推荐理由：它能帮你把「${day.title}」这一天的空间动线串起来。`,
+  };
 
   return {
     kicker: `${day.day} · ${day.date} · ${day.city}`,
     title: place.name,
-    description,
-    reason,
+    description: insight.description,
+    reason: insight.reason,
   };
 }
 
@@ -939,6 +1046,7 @@ timeline.addEventListener("click", (event) => {
 });
 
 placeInsightClose.addEventListener("click", () => clearActivePlace());
+fitRouteButton.addEventListener("click", () => clearActivePlace({ fitRoute: true }));
 
 initMap();
 renderPlan(activePlanKey);
