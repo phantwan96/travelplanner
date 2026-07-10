@@ -1303,102 +1303,48 @@ function escapeHtml(value) {
 function renderComparison() {
   if (!comparisonOverview || !comparisonTable) return;
 
-  comparisonOverview.innerHTML = "";
+  comparisonOverview.innerHTML = planOrder.map((planKey) => renderPlanComparisonCard(planKey)).join("");
   comparisonTable.innerHTML = renderDailyComparisonTable();
   updateComparisonActive(activePlanKey);
 }
 
 function renderPlanComparisonCard(planKey) {
   const meta = comparisonMeta[planKey];
-  const maxStay = Math.max(...Object.values(comparisonMeta).flatMap((entry) => entry.stays.map(([, days]) => days)));
-  const keyPoints = [
-    ...meta.pros.slice(0, 2).map((item) => `保：${item}`),
-    ...meta.cons.slice(0, 2).map((item) => `换：${item}`),
-  ];
+  const isRecommended = planKey === "abu";
 
   return `
     <article class="comparison-card" data-compare-plan="${escapeHtml(planKey)}">
+      <div class="comparison-card-topline">
+        <span>${isRecommended ? "最均衡" : "特色方案"}</span>
+        <span>13 天 12 晚</span>
+      </div>
       <div class="comparison-card-head">
         <div class="comparison-card-copy">
           <p>${escapeHtml(meta.label)}</p>
           <h3>${escapeHtml(meta.shortName)}</h3>
           <span>${escapeHtml(meta.subtitle ?? "")}</span>
         </div>
-        <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}" aria-label="查看地图中的 ${escapeHtml(meta.label)}">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 21s-5.5-5.3-5.5-10A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 17.5 11c0 4.7-5.5 10-5.5 10Zm0-7.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
       </div>
-      <section class="key-list">
-        <h4>关键差异</h4>
-        <ul>${keyPoints.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-      </section>
-      <section class="note-list">
-        <h4>注意</h4>
-        <ul>${meta.notes.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-      </section>
-      <section class="stay-list">
-        <h4>住宿天数</h4>
-        ${meta.stays
-          .map(
-            ([city, days, label]) => `
-              <div class="stay-row">
-                <span>${escapeHtml(city)}</span>
-                <div class="stay-meter" aria-hidden="true"><i style="width: ${(days / maxStay) * 100}%"></i></div>
-                <strong>${escapeHtml(label ?? `${days} 晚`)}</strong>
-              </div>
-            `
-          )
+      <div class="comparison-metrics">
+        ${meta.metrics
+          .slice(0, 3)
+          .map(([label, value]) => `<span><small>${escapeHtml(label)}</small>${escapeHtml(value)}</span>`)
           .join("")}
+      </div>
+      <section class="comparison-card-section">
+        <h4>你会得到</h4>
+        <ul class="comparison-bullet-list">${meta.pros.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
       </section>
+      <section class="comparison-card-section comparison-tradeoff">
+        <h4>需要取舍</h4>
+        <p>${escapeHtml(meta.cons[0])}</p>
+      </section>
+      <p class="comparison-stays">${meta.stays.map(([city, , label]) => `${escapeHtml(city)} ${escapeHtml(label)}`).join(" · ")}</p>
+      <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}" aria-pressed="false">
+        选择这套
+      </button>
     </article>
   `;
-}
-
-function renderPlanSummaryCell(planKey) {
-  const meta = comparisonMeta[planKey];
-  const maxStay = Math.max(...Object.values(comparisonMeta).flatMap((entry) => entry.stays.map(([, days]) => days)));
-  return {
-    intro: `
-      <div class="comparison-card-head">
-        <div class="comparison-card-copy">
-          <p>${escapeHtml(meta.label)}</p>
-          <h3>${escapeHtml(meta.shortName)}</h3>
-          <span>${escapeHtml(meta.subtitle ?? "")}</span>
-        </div>
-        <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}" aria-label="查看地图中的 ${escapeHtml(meta.label)}">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 21s-5.5-5.3-5.5-10A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 17.5 11c0 4.7-5.5 10-5.5 10Zm0-7.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-      </div>
-    `,
-    pros: `<ul class="comparison-bullet-list">${meta.pros.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`,
-    cons: `<ul class="comparison-bullet-list">${meta.cons.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`,
-    notes: `<ul class="comparison-bullet-list">${meta.notes.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`,
-    stays: `
-      <div class="stay-list">
-        ${meta.stays
-          .map(
-            ([city, days, label]) => `
-              <div class="stay-row">
-                <span>${escapeHtml(city)}</span>
-                <div class="stay-meter" aria-hidden="true"><i style="width: ${(days / maxStay) * 100}%"></i></div>
-                <strong>${escapeHtml(label ?? `${days} 晚`)}</strong>
-              </div>
-            `
-          )
-          .join("")}
-      </div>
-    `,
-  };
 }
 
 function renderDailyComparisonTable() {
@@ -1409,113 +1355,59 @@ function renderDailyComparisonTable() {
   }));
 
   return `
-    <table class="comparison-table">
-      <tbody>
-        <tr class="comparison-summary-row comparison-intro-row">
-          <th scope="row">
-            <strong>简介</strong>
-          </th>
-          ${planOrder
-            .map(
-              (planKey) => `
-                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
-                  ${renderPlanSummaryCell(planKey).intro}
-                </td>
-              `
-            )
-            .join("")}
-        </tr>
-        <tr class="comparison-summary-row">
-          <th scope="row">
-            <strong>优点</strong>
-          </th>
-          ${planOrder
-            .map(
-              (planKey) => `
-                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
-                  ${renderPlanSummaryCell(planKey).pros}
-                </td>
-              `
-            )
-            .join("")}
-        </tr>
-        <tr class="comparison-summary-row">
-          <th scope="row">
-            <strong>缺点</strong>
-          </th>
-          ${planOrder
-            .map(
-              (planKey) => `
-                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
-                  ${renderPlanSummaryCell(planKey).cons}
-                </td>
-              `
-            )
-            .join("")}
-        </tr>
-        <tr class="comparison-summary-row">
-          <th scope="row">
-            <strong>注意</strong>
-          </th>
-          ${planOrder
-            .map(
-              (planKey) => `
-                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
-                  ${renderPlanSummaryCell(planKey).notes}
-                </td>
-              `
-            )
-            .join("")}
-        </tr>
-        <tr class="comparison-summary-row">
-          <th scope="row">
-            <strong>住宿</strong>
-          </th>
-          ${planOrder
-            .map(
-              (planKey) => `
-                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
-                  ${renderPlanSummaryCell(planKey).stays}
-                </td>
-              `
-            )
-            .join("")}
-        </tr>
+    <section class="daily-comparison" aria-labelledby="dailyComparisonTitle">
+      <div class="daily-comparison-heading">
+        <p>每天怎么走</p>
+        <h3 id="dailyComparisonTitle">逐日看差异</h3>
+        <span>同一天横向比较，转场和节奏一眼就能看出来。</span>
+      </div>
+      <div class="day-compare-list">
         ${dates
           .map(
             ({ day, date, index }) => `
-              <tr>
-                <th scope="row">
+              <article class="day-compare-group">
+                <header>
                   <strong>${escapeHtml(day)}</strong>
                   <span>${escapeHtml(date)}</span>
-                </th>
-                ${planOrder.map((planKey) => renderDailyComparisonCell(planKey, index)).join("")}
-              </tr>
+                </header>
+                <div class="day-compare-grid">
+                  ${planOrder.map((planKey) => renderDailyComparisonCell(planKey, index)).join("")}
+                </div>
+              </article>
             `
           )
           .join("")}
-      </tbody>
-    </table>
+      </div>
+    </section>
   `;
 }
 
 function renderDailyComparisonCell(planKey, dayIndex) {
   const day = plans[planKey].days[dayIndex];
-  if (!day) return `<td data-compare-plan="${escapeHtml(planKey)}"></td>`;
+  if (!day) return `<div class="comparison-day-cell" data-compare-plan="${escapeHtml(planKey)}"></div>`;
 
   return `
-    <td data-compare-plan="${escapeHtml(planKey)}">
-      <div class="comparison-day-cell">
-        <p>${escapeHtml(day.city)}</p>
-        <strong>${escapeHtml(day.title)}</strong>
-        <span>${escapeHtml(day.tags.slice(0, 3).join(" · "))}</span>
-      </div>
-    </td>
+    <div class="comparison-day-cell" data-compare-plan="${escapeHtml(planKey)}">
+      <button type="button" data-plan="${escapeHtml(planKey)}">${escapeHtml(comparisonMeta[planKey].label)}</button>
+      <p>${escapeHtml(day.city)}</p>
+      <strong>${escapeHtml(day.title)}</strong>
+      <span>${escapeHtml(day.tags.slice(0, 3).join(" · "))}</span>
+    </div>
   `;
 }
 
 function updateComparisonActive(planKey) {
-  return planKey;
+  [comparisonOverview, comparisonTable].forEach((container) => {
+    container?.querySelectorAll("[data-compare-plan]").forEach((element) => {
+      element.classList.toggle("is-active", element.dataset.comparePlan === planKey);
+    });
+  });
+
+  comparisonOverview?.querySelectorAll(".compare-select-button").forEach((button) => {
+    const isActive = button.dataset.plan === planKey;
+    button.setAttribute("aria-pressed", String(isActive));
+    button.textContent = isActive ? "当前方案" : "选择这套";
+  });
 }
 
 function getTransitNote(day) {
