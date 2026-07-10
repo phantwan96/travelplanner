@@ -5,80 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>埃及 2026 十一行程路书</title>
     <link rel="stylesheet" href="./vendor/ol.css" />
-    <link rel="stylesheet" href="./styles.css?v=6" />
+    <link rel="stylesheet" href="./styles.css?v=16" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-copy">
-        <p class="kicker">Egypt Route Book</p>
-        <h1>2026 十一埃及路书</h1>
-        <p class="summary">
-          9 月 25 日下午落地开罗，10 月 6 日从埃及返程，10 月 7 日国内落地。三套方案都保留开罗、卢克索和红海，核心差异是阿布辛贝和转场节奏。
-        </p>
-      </div>
-      <div class="quick-facts" aria-label="行程摘要">
-        <div>
-          <span>出发</span>
-          <strong>北京 9/24 晚</strong>
-        </div>
-        <div>
-          <span>落地</span>
-          <strong>开罗 9/25 上午</strong>
-        </div>
-        <div>
-          <span>返程</span>
-          <strong>埃及 10/6</strong>
-        </div>
-      </div>
-    </header>
-
     <main class="route-workspace">
       <aside class="route-sidebar" aria-label="行程对比与每日路书">
-        <section class="control-panel" aria-label="行程对比工具">
-          <div class="panel-title">
-            <p>方案切换</p>
-            <h2 id="planTitle">A. 有阿布辛贝</h2>
+        <header class="site-header">
+          <div class="header-copy">
+            <h1>2026 埃及</h1>
+            <p class="trip-meta">09.25 至 10.07 · 13 天 12 晚</p>
+            <p class="trip-brief">开罗进出，走阿斯旺、阿布辛贝、卢克索，最后在红海收尾。</p>
           </div>
-
-          <div class="segmented-control" role="tablist" aria-label="选择行程方案">
-            <button class="plan-tab is-active" type="button" data-plan="abu" role="tab" aria-selected="true">
-              有阿布辛贝
-            </button>
-            <button class="plan-tab" type="button" data-plan="lean" role="tab" aria-selected="false">
-              没阿布辛贝
-            </button>
-            <button class="plan-tab" type="button" data-plan="doubao" role="tab" aria-selected="false">
-              方案C
-            </button>
-          </div>
-
-          <p id="planSummary" class="plan-summary"></p>
-
-          <div class="score-grid" aria-label="方案指标">
-            <div>
-              <span>完整度</span>
-              <strong id="scoreCompleteness"></strong>
+          <div class="hero-actions" aria-label="行程工具">
+            <details class="flight-details">
+              <summary>机票信息</summary>
+              <div class="quick-facts" aria-label="航班时间">
+                <div>
+                  <span>去程</span>
+                  <strong>北京 9/25 02:30</strong>
+                  <em>开罗 9/25 09:15</em>
+                </div>
+                <div>
+                  <span>返程</span>
+                  <strong>开罗 10/6 15:00</strong>
+                  <em>北京 10/7 09:00</em>
+                </div>
+              </div>
+            </details>
+            <div class="plan-menu" id="planMenu">
+              <button
+                class="plan-menu-button"
+                id="planMenuButton"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                推荐行程
+                <span class="menu-caret" aria-hidden="true"></span>
+              </button>
+              <div class="plan-menu-list" id="planMenuList" role="listbox" hidden>
+                <button class="plan-menu-option is-active" type="button" role="option" aria-selected="true" data-plan="abu">
+                  推荐行程
+                </button>
+                <button class="plan-menu-option" type="button" role="option" aria-selected="false" data-plan="doubao">
+                  原 C
+                </button>
+                <button class="plan-menu-option" type="button" role="option" aria-selected="false" data-plan="lean">
+                  无阿布辛贝
+                </button>
+                <button class="plan-menu-compare" id="compareToggleButton" type="button" aria-haspopup="dialog" aria-controls="comparisonDialog">
+                  对比
+                </button>
+              </div>
             </div>
-            <div>
-              <span>松弛度</span>
-              <strong id="scoreEase"></strong>
-            </div>
-            <div>
-              <span>转场压力</span>
-              <strong id="scoreTransit"></strong>
-            </div>
           </div>
-
-          <div class="route-note">
-            <span class="note-label">判断</span>
-            <p id="planVerdict"></p>
-          </div>
-        </section>
+          <h2 id="planTitle" class="visually-hidden">A. 开罗 2.5 天 + 阿布辛贝</h2>
+        </header>
 
         <section class="timeline-section" aria-label="完整每日行程">
           <div class="section-heading">
             <h2>每日行程</h2>
-            <p id="timelineIntro"></p>
+            <p id="timelineIntro" class="visually-hidden"></p>
           </div>
           <div id="timeline" class="timeline"></div>
         </section>
@@ -90,8 +77,8 @@
           <button class="place-insight-close" id="placeInsightClose" type="button" aria-label="关闭地点卡片">
             ×
           </button>
-          <p class="place-insight-kicker" id="placeInsightKicker"></p>
           <h2 id="placeInsightTitle"></h2>
+          <dl class="place-name-grid" id="placeInsightNames"></dl>
           <p id="placeInsightDescription"></p>
           <p class="place-insight-reason" id="placeInsightReason"></p>
         </aside>
@@ -102,11 +89,33 @@
       </section>
     </main>
 
+    <dialog class="comparison-dialog" id="comparisonDialog" aria-labelledby="comparisonTitle">
+      <div class="comparison-dialog-panel">
+        <button class="comparison-close" id="comparisonClose" type="button" aria-label="关闭方案对比">
+          ×
+        </button>
+        <section class="comparison-section" id="comparisonSection">
+          <div class="comparison-heading">
+            <div>
+              <p class="kicker">Plan Matrix</p>
+              <h2 id="comparisonTitle">完整方案对比</h2>
+            </div>
+            <p>
+              纵轴按日期，横轴按方案。城市停留按 0.5 天粒度估算，剔除纯交通和返程等待时间。
+            </p>
+          </div>
+
+          <div id="comparisonOverview" class="comparison-overview" aria-label="方案优劣势、注意事项和停留时间"></div>
+          <div id="comparisonTable" class="comparison-table-wrap" aria-label="按日期对比三套方案"></div>
+        </section>
+      </div>
+    </dialog>
+
     <footer class="site-footer">
       <p>地图使用 OpenLayers + OpenStreetMap，不需要外部地图 API key。点位和日期用于方案对比，订票前仍需按实际航班微调。</p>
     </footer>
 
     <script src="./vendor/ol.js"></script>
-    <script src="./app.js?v=6"></script>
+    <script src="./app.js?v=17"></script>
   </body>
 </html>

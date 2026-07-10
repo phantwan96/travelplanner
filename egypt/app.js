@@ -1,23 +1,26 @@
 const plans = {
   abu: {
-    title: "A. 有阿布辛贝",
+    title: "A. 开罗 2.5 天 + 阿布辛贝",
     summary:
-      "更完整的埃及主线。开罗之后进入阿斯旺，加入阿布辛贝，再北上卢克索，最后用红海收尾。",
+      "在 C 版基础上把开罗拉到 2.5 天：落地下午看 GEM，第二天金字塔线，第三天补开罗城市面，再晚飞阿斯旺。",
     verdict:
-      "适合你想把第一次埃及的文明线走得更完整。代价是红海只剩一个完整休息日，转场密度明显更高。",
+      "当前推荐：保留阿斯旺和阿布辛贝，10/3 上午转红海，10/6 早班机回开罗接 15:00 返程。",
     scores: {
       completeness: "高",
-      ease: "中",
-      transit: "高",
+      ease: "中高",
+      transit: "中高",
     },
     intro:
-      "这版把阿斯旺和阿布辛贝放进来，体验更饱满，但每天之间的连接要更严谨，尤其 9/30 到 10/4 这一段。",
+      "这版把开罗补到更完整，同时保留阿斯旺、阿布辛贝和卢克索主线。红海不是两个完整自然日，但 10/3 下午、10/4 全天、10/5 半天加起来接近两天度假体感。",
     route: [
       [30.0444, 31.2357],
+      [29.9937, 31.1194],
       [29.9773, 31.1325],
+      [29.8713, 31.2165],
       [24.0889, 32.8998],
       [22.3372, 31.6258],
       [24.4529, 32.9283],
+      [24.9781, 32.8735],
       [25.6872, 32.6396],
       [27.2579, 33.8116],
       [30.0444, 31.2357],
@@ -26,69 +29,62 @@ const plans = {
       {
         day: "D1",
         date: "9/25 周五",
-        title: "抵达开罗，先把身体放稳",
+        title: "抵达开罗，下午 GEM",
         city: "开罗",
         coords: [30.0444, 31.2357],
-        morning: "北京夜航后抵达开罗，入境、取行李、换少量现金或取现。",
-        afternoon: "入住酒店，午后只安排恢复。可以在 Zamalek 或尼罗河边轻轻走一段。",
-        evening: "早晚饭都简单处理。今晚的目标不是开始冲景点，而是把时差和体力接住。",
-        tags: ["入住", "低强度", "开罗"],
+        morning: "清晨抵达开罗，入境、取行李、换钱或取现，去酒店放行李。能 early check-in 就先休息。",
+        afternoon: "前往 GEM 大埃及博物馆，把它作为当天唯一主内容。建议住吉萨或 GEM 附近，减少落地日通勤。",
+        evening: "轻量吃饭，早点收。今晚不用再加老城或夜市。",
+        tags: ["落地日", "GEM", "轻量"],
         places: [
           { id: "abu-cairo", name: "开罗市区", coords: [30.0444, 31.2357] },
-          { id: "abu-zamalek", name: "Zamalek", coords: [30.0611, 31.2197] },
+          { id: "abu-gem", name: "GEM", coords: [29.9937, 31.1194] },
         ],
       },
       {
         day: "D2",
         date: "9/26 周六",
-        title: "GEM，大埃及博物馆建立世界观",
-        city: "吉萨",
-        coords: [29.9937, 31.1194],
-        morning: "前往 Grand Egyptian Museum。建议提前订票，上午先看主线展厅。",
-        afternoon: "继续 GEM，不急着把当天塞满。博物馆结束后回酒店休息。",
-        evening: "Zamalek 或 Downtown 吃饭，留一个城市散步的口子。",
-        tags: ["博物馆", "古埃及主线", "建议预约"],
-        places: [{ id: "abu-gem", name: "GEM", coords: [29.9937, 31.1194] }],
-      },
-      {
-        day: "D3",
-        date: "9/27 周日",
-        title: "吉萨金字塔群和狮身人面像",
-        city: "吉萨",
+        title: "吉萨、萨卡拉、达舒尔",
+        city: "吉萨与孟菲斯墓葬区",
         coords: [29.9773, 31.1325],
-        morning: "早些出发，吉萨高原、胡夫金字塔、观景点。建议请靠谱导游。",
-        afternoon: "狮身人面像和周边收尾。不要再硬塞大量开罗景点。",
-        evening: "回酒店休息，晚餐轻松一点。",
-        tags: ["必看", "建议导游", "高热量日"],
+        morning: "吉萨金字塔群 + 狮身人面像。建议请导游或包车，早出发，减少现场拉扯。",
+        afternoon: "萨卡拉阶梯金字塔 + 达舒尔。只抓主线，不追求每个点都深挖。",
+        evening: "回酒店休息。今晚不要飞阿斯旺，把开罗城市日留出来。",
+        tags: ["强执行", "金字塔线", "建议包车"],
         places: [
           { id: "abu-giza", name: "吉萨金字塔群", coords: [29.9773, 31.1325] },
           { id: "abu-sphinx", name: "狮身人面像", coords: [29.9753, 31.1376] },
-        ],
-      },
-      {
-        day: "D4",
-        date: "9/28 周一",
-        title: "Saqqara / Dahshur，夜飞阿斯旺",
-        city: "开罗到阿斯旺",
-        coords: [29.8713, 31.2165],
-        morning: "Saqqara 和 Dahshur 半日，补上金字塔演化脉络。",
-        afternoon: "回开罗取行李，预留充足机场时间。",
-        evening: "飞阿斯旺，抵达后直接入住。",
-        tags: ["转场", "古迹", "夜飞"],
-        places: [
           { id: "abu-saqqara", name: "Saqqara", coords: [29.8713, 31.2165] },
           { id: "abu-dahshur", name: "Dahshur", coords: [29.8069, 31.2086] },
         ],
       },
       {
-        day: "D5",
-        date: "9/29 周二",
+        day: "D3",
+        date: "9/27 周日",
+        title: "开罗城市日，晚上飞阿斯旺",
+        city: "开罗到阿斯旺",
+        coords: [30.0444, 31.2357],
+        morning: "开罗城市线择一条：老开罗、伊斯兰开罗，或埃及文明博物馆。不要三条都塞。",
+        afternoon: "哈利利市场或 Zamalek 慢走，留出回酒店取行李和去机场的时间。",
+        evening: "晚飞阿斯旺，抵达后直接入住。尽量选不太晚的航班。",
+        tags: ["开罗城市", "弹性", "夜飞"],
+        places: [
+          { id: "abu-old-cairo", name: "老开罗", coords: [30.0061, 31.2308] },
+          { id: "abu-islamic-cairo", name: "伊斯兰开罗", coords: [30.0477, 31.2628] },
+          { id: "abu-zamalek", name: "Zamalek", coords: [30.0611, 31.2197] },
+          { id: "abu-cairo-airport-out", name: "开罗机场", coords: [30.1219, 31.4056] },
+          { id: "abu-aswan-arrive", name: "阿斯旺", coords: [24.0889, 32.8998] },
+        ],
+      },
+      {
+        day: "D4",
+        date: "9/28 周一",
         title: "阿斯旺，尼罗河和边境感",
         city: "阿斯旺",
         coords: [24.0889, 32.8998],
-        morning: "Philae Temple，适合慢一点看水、岛和神庙空间。",
-        afternoon: "Nubian Museum。这里能补上努比亚和上埃及的文化层次。",
-        evening: "尼罗河边吃饭或短暂 felucca，保持轻量。",
+        morning: "Philae Temple，慢一点看水、岛和神庙空间。",
+        afternoon: "Nubian Museum 或酒店休息。这里是从开罗强执行切回身体节奏的一天。",
+        evening: "尼罗河边吃饭或短暂 felucca，保持轻量，为阿布辛贝早起留体力。",
         tags: ["Philae", "Nubian Museum", "慢节奏"],
         places: [
           { id: "abu-philae", name: "Philae Temple", coords: [24.025, 32.8841] },
@@ -96,103 +92,120 @@ const plans = {
         ],
       },
       {
-        day: "D6",
-        date: "9/30 周三",
-        title: "阿布辛贝一日",
+        day: "D5",
+        date: "9/29 周二",
+        title: "阿布辛贝一日往返",
         city: "阿布辛贝",
         coords: [22.3372, 31.6258],
-        morning: "清晨出发前往 Abu Simbel。可以小团、包车或看当年航班衔接。",
-        afternoon: "返回阿斯旺。当天不要再排重内容。",
-        evening: "休息，整理行李，为第二天北上卢克索做准备。",
-        tags: ["早起", "大强度", "文明高光"],
+        morning: "清晨出发前往阿布辛贝。小团、包车或航班都提前看好。",
+        afternoon: "返回阿斯旺。当天不再排重内容。",
+        evening: "继续住阿斯旺，早点休息。",
+        tags: ["阿布辛贝", "早起", "文明高光"],
         places: [{ id: "abu-abu-simbel", name: "阿布辛贝", coords: [22.3372, 31.6258] }],
       },
       {
-        day: "D7",
-        date: "10/1 周四",
-        title: "阿斯旺到卢克索，转场本身有内容",
+        day: "D6",
+        date: "9/30 周三",
+        title: "阿斯旺包车北上卢克索",
         city: "尼罗河谷",
         coords: [24.4529, 32.9283],
-        morning: "包车北上，先看 Kom Ombo Temple。",
-        afternoon: "继续到 Edfu Temple of Horus，再抵达卢克索。",
-        evening: "入住卢克索。今晚不要安排夜游。",
+        morning: "从阿斯旺包车出发，先看康翁波神庙。",
+        afternoon: "继续看埃德富神庙，再前往卢克索。",
+        evening: "傍晚或晚上抵达卢克索入住。今晚不要安排夜游。",
         tags: ["包车", "Kom Ombo", "Edfu"],
         places: [
           { id: "abu-kom-ombo", name: "Kom Ombo", coords: [24.4529, 32.9283] },
           { id: "abu-edfu", name: "Edfu", coords: [24.9781, 32.8735] },
+          { id: "abu-luxor-arrive", name: "卢克索", coords: [25.6872, 32.6396] },
+        ],
+      },
+      {
+        day: "D7",
+        date: "10/1 周四",
+        title: "卢克索西岸",
+        city: "卢克索",
+        coords: [25.7402, 32.6014],
+        morning: "帝王谷。建议请导游，挑重点墓室看。",
+        afternoon: "哈特谢普苏特神庙、门农巨像。体力好可加 Medinet Habu。",
+        evening: "回酒店恢复。卢克索这两晚尽量住舒服一点。",
+        tags: ["西岸", "建议导游", "帝王谷"],
+        places: [
+          { id: "abu-valley-kings", name: "帝王谷", coords: [25.7402, 32.6014] },
+          { id: "abu-hatshepsut", name: "哈特谢普苏特神庙", coords: [25.7386, 32.6066] },
+          { id: "abu-colossi", name: "门农巨像", coords: [25.7206, 32.6106] },
+          { id: "abu-medinet", name: "Medinet Habu", coords: [25.7195, 32.6006] },
         ],
       },
       {
         day: "D8",
         date: "10/2 周五",
-        title: "卢克索西岸，帝王谷和哈特谢普苏特",
-        city: "卢克索",
-        coords: [25.7402, 32.6014],
-        morning: "帝王谷。建议请导游，挑重点墓室，不追求数量。",
-        afternoon: "哈特谢普苏特神庙、门农巨像。状态好再加 Medinet Habu。",
-        evening: "回酒店恢复，尤其推荐住带尼罗河景或泳池的地方。",
-        tags: ["建议导游", "帝王谷", "西岸"],
-        places: [
-          { id: "abu-valley-kings", name: "帝王谷", coords: [25.7402, 32.6014] },
-          { id: "abu-hatshepsut", name: "哈特谢普苏特神庙", coords: [25.7386, 32.6066] },
-          { id: "abu-medinet", name: "Medinet Habu", coords: [25.7195, 32.6006] },
-        ],
-      },
-      {
-        day: "D9",
-        date: "10/3 周六",
-        title: "Karnak 和 Luxor Temple",
+        title: "卢克索东岸",
         city: "卢克索",
         coords: [25.7188, 32.6573],
-        morning: "Karnak。这里值得慢看，不要赶。",
-        afternoon: "中午和下午前半段留白，回酒店休息。",
-        evening: "Luxor Temple 傍晚到夜里去，光线和氛围更好。",
-        tags: ["Karnak", "Luxor Temple", "留白"],
+        morning: "卡纳克神庙，留足时间慢看。",
+        afternoon: "中午和下午前半段回酒店休息。",
+        evening: "傍晚到夜里去卢克索神庙。灯光秀只作为体力好时的可选项。",
+        tags: ["Karnak", "Luxor Temple", "灯光秀可选"],
         places: [
           { id: "abu-karnak", name: "Karnak", coords: [25.7188, 32.6573] },
           { id: "abu-luxor-temple", name: "Luxor Temple", coords: [25.6995, 32.6391] },
         ],
       },
       {
-        day: "D10",
-        date: "10/4 周日",
-        title: "卢克索到红海",
+        day: "D9",
+        date: "10/3 周六",
+        title: "上午去红海，下午切换度假",
         city: "红海",
         coords: [27.2579, 33.8116],
-        morning: "从卢克索去红海，优先看包车到 Hurghada / Soma Bay / Makadi Bay。",
-        afternoon: "入住海边酒店，下午不排项目。",
-        evening: "海边晚饭，开始进入恢复段。",
+        morning: "从卢克索出发前往红海，按 4.5-5 小时车程预估，优先考虑 Hurghada / Soma Bay / Makadi Bay / El Gouna。",
+        afternoon: "入住海边酒店，吃点东西、换衣服，下午后半段开始海边休息。",
+        evening: "海边晚饭，正式进入恢复段。",
         tags: ["转场", "红海", "休息"],
         places: [{ id: "abu-red-sea", name: "红海度假区", coords: [27.2579, 33.8116] }],
       },
       {
-        day: "D11",
-        date: "10/5 周一",
+        day: "D10",
+        date: "10/4 周日",
         title: "红海整日",
         city: "红海",
         coords: [27.2579, 33.8116],
-        morning: "你可以躺海边或轻浮潜，男友可以安排潜水。",
-        afternoon: "继续休息。不要把这天改成沙漠冲项目。",
-        evening: "海边晚餐，给这趟高密度文明线一个真正的落点。",
-        tags: ["潜水", "浮潜", "恢复"],
+        morning: "出海深潜或轻浮潜，男友可以安排潜水。",
+        afternoon: "沙滩、泳池、SPA 或继续看海，不安排景点赶路。",
+        evening: "海边晚餐，保住这趟行程的身体感。",
+        tags: ["潜水", "完整休息日", "红海"],
         places: [{ id: "abu-hurghada", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] }],
+      },
+      {
+        day: "D11",
+        date: "10/5 周一",
+        title: "红海完整日",
+        city: "红海",
+        coords: [27.2579, 33.8116],
+        morning: "继续海边休息，或补一个轻量海上项目。",
+        afternoon: "泳池、浮潜、SPA 或留白。不再安排沙漠和长途项目。",
+        evening: "早点收行李，为 10/6 早班机回开罗留体力。",
+        tags: ["完整休息日", "红海", "返程准备"],
+        places: [{ id: "abu-red-sea-return", name: "红海度假区", coords: [27.2579, 33.8116] }],
       },
       {
         day: "D12",
         date: "10/6 周二",
-        title: "从红海或开罗返程",
+        title: "早班机回开罗，15:00 返程",
         city: "返程",
-        coords: [30.0444, 31.2357],
-        morning: "根据航班选择从红海飞开罗，或前一天已回开罗。",
-        afternoon: "预留国际航班衔接时间。",
-        evening: "从埃及返程，10/7 国内落地。",
-        tags: ["返程", "预留缓冲", "10/7 到家"],
-        places: [{ id: "abu-cairo-airport", name: "开罗机场", coords: [30.1219, 31.4056] }],
+        coords: [30.1219, 31.4056],
+        morning: "从红海飞开罗，优先选 07:40 或 09:45 到达 CAI 的航班，给重新值机和出境留余量。",
+        afternoon: "15:00 从开罗起飞，经阿布扎比转机。",
+        evening: "飞行途中，10/7 09:00 抵达北京。",
+        tags: ["早班机", "开罗机场", "10/7 到家"],
+        places: [
+          { id: "abu-red-sea-final", name: "红海度假区", coords: [27.2579, 33.8116] },
+          { id: "abu-cairo-airport", name: "开罗机场", coords: [30.1219, 31.4056] },
+        ],
       },
     ],
   },
   lean: {
-    title: "B. 没阿布辛贝",
+    title: "C. 无阿布辛贝版",
     summary:
       "更像你的节奏。开罗和卢克索主线打稳，把阿斯旺和阿布辛贝让出去，换回完整红海恢复段。",
     verdict:
@@ -379,7 +392,7 @@ const plans = {
     ],
   },
   doubao: {
-    title: "C. 豆包修正版",
+    title: "B. 原 C：豆包修正版",
     summary:
       "基于豆包方案微调：GEM 放到落地日下午，阿斯旺到卢克索改为包车北上。完整度高，同时保住红海两个完整日。",
     verdict:
@@ -581,6 +594,77 @@ const plans = {
   },
 };
 
+const planOrder = ["abu", "doubao", "lean"];
+const planMenuLabels = {
+  abu: "推荐行程",
+  doubao: "原 C",
+  lean: "无阿布辛贝",
+};
+
+const comparisonMeta = {
+  abu: {
+    label: "A 新推荐",
+    shortName: "开罗 2.5 天 + 阿布辛贝",
+    metrics: [
+      ["开罗", "2.5 天"],
+      ["红海", "约 3 天"],
+      ["阿布辛贝", "保留"],
+      ["压力点", "10/6 衔接"],
+    ],
+    pros: ["开罗层次更完整", "保留阿斯旺和阿布辛贝", "红海时间更完整"],
+    cons: ["10/6 需要国内航班衔接国际航班", "10/3 卢克索到红海会吃掉上午", "9/27 晚飞阿斯旺要看航班"],
+    notes: ["10/6 优先选 07:40 或 09:45 到达 CAI", "10:10 到达可用但余量更薄", "开罗城市日只选一条主线"],
+    stays: [
+      ["开罗", 2.5],
+      ["阿斯旺", 1],
+      ["阿布辛贝", 0.5],
+      ["Kom Ombo / Edfu", 0.5],
+      ["卢克索", 2],
+      ["红海", 3],
+    ],
+  },
+  doubao: {
+    label: "B 原 C",
+    shortName: "豆包修正版",
+    metrics: [
+      ["开罗", "1.5 天"],
+      ["红海", "约 3 天"],
+      ["阿布辛贝", "保留"],
+      ["压力点", "9/26 强执行"],
+    ],
+    pros: ["阿斯旺和阿布辛贝都保留", "红海时间最扎实", "后半程恢复感最好"],
+    cons: ["开罗被压缩", "9/26 金字塔线后晚飞阿斯旺较硬", "落地日 GEM 容错不高"],
+    notes: ["适合更重视红海完整度", "9/26 建议包车和导游", "若落地疲劳明显，D1 GEM 体验会打折"],
+    stays: [
+      ["开罗", 1.5],
+      ["阿斯旺", 1],
+      ["阿布辛贝", 0.5],
+      ["Kom Ombo / Edfu", 0.5],
+      ["卢克索", 2],
+      ["红海", 3],
+    ],
+  },
+  lean: {
+    label: "C 无阿布辛贝",
+    shortName: "舒适版",
+    metrics: [
+      ["开罗", "约 3 天"],
+      ["红海", "约 3 天"],
+      ["阿布辛贝", "放弃"],
+      ["压力点", "最低"],
+    ],
+    pros: ["整体最松", "红海恢复最稳定", "卢克索有弹性日"],
+    cons: ["放弃阿斯旺和阿布辛贝", "第一次埃及完整度降低", "以后单独补阿布辛贝概率低"],
+    notes: ["Dendera 可按体力替换为卢克索慢走", "适合优先保护体力和体验质量", "如果阿布辛贝是执念，这版心理遗憾最大"],
+    stays: [
+      ["开罗", 3],
+      ["卢克索", 2],
+      ["Dendera", 0.5],
+      ["红海", 3],
+    ],
+  },
+};
+
 let activePlanKey = "abu";
 let map;
 let view;
@@ -590,8 +674,15 @@ let routeLayer;
 let placeLayer;
 const placeFeatures = new Map();
 let activePlaceId = null;
+let activeRouteDayId = null;
 
-const tabs = document.querySelectorAll(".plan-tab");
+const planMenu = document.querySelector("#planMenu");
+const planMenuButton = document.querySelector("#planMenuButton");
+const planMenuList = document.querySelector("#planMenuList");
+const planMenuOptions = Array.from(document.querySelectorAll(".plan-menu-option"));
+const compareToggleButton = document.querySelector("#compareToggleButton");
+const comparisonDialog = document.querySelector("#comparisonDialog");
+const comparisonClose = document.querySelector("#comparisonClose");
 const title = document.querySelector("#planTitle");
 const summary = document.querySelector("#planSummary");
 const completeness = document.querySelector("#scoreCompleteness");
@@ -600,12 +691,14 @@ const transit = document.querySelector("#scoreTransit");
 const verdict = document.querySelector("#planVerdict");
 const intro = document.querySelector("#timelineIntro");
 const timeline = document.querySelector("#timeline");
+const comparisonOverview = document.querySelector("#comparisonOverview");
+const comparisonTable = document.querySelector("#comparisonTable");
 const fallback = document.querySelector("#mapFallback");
 const fitRouteButton = document.querySelector("#fitRouteButton");
 const placeInsightCard = document.querySelector("#placeInsightCard");
 const placeInsightClose = document.querySelector("#placeInsightClose");
-const placeInsightKicker = document.querySelector("#placeInsightKicker");
 const placeInsightTitle = document.querySelector("#placeInsightTitle");
+const placeInsightNames = document.querySelector("#placeInsightNames");
 const placeInsightDescription = document.querySelector("#placeInsightDescription");
 const placeInsightReason = document.querySelector("#placeInsightReason");
 let currentRouteExtent = null;
@@ -717,6 +810,184 @@ const placeInsights = {
   },
 };
 
+const placeNameMeta = {
+  开罗市区: {
+    zh: "开罗市区",
+    en: "Cairo",
+    abbr: "CAI",
+    local: "القاهرة",
+    duration: "1.5-3h",
+  },
+  开罗: {
+    zh: "开罗",
+    en: "Cairo",
+    abbr: "CAI",
+    local: "القاهرة",
+    duration: "2-4h",
+  },
+  Zamalek: {
+    zh: "扎马雷克",
+    en: "Zamalek",
+    local: "الزمالك",
+    duration: "1-2h",
+  },
+  GEM: {
+    zh: "大埃及博物馆",
+    en: "Grand Egyptian Museum",
+    abbr: "GEM",
+    local: "المتحف المصري الكبير",
+    duration: "4-5h",
+  },
+  吉萨金字塔群: {
+    zh: "吉萨金字塔群",
+    en: "Giza Pyramid Complex",
+    local: "أهرامات الجيزة",
+    duration: "2.5-3.5h",
+  },
+  狮身人面像: {
+    zh: "狮身人面像",
+    en: "Great Sphinx of Giza",
+    local: "أبو الهول",
+    duration: "0.5h",
+  },
+  Saqqara: {
+    zh: "萨卡拉",
+    en: "Saqqara",
+    local: "سقارة",
+    duration: "1.5-2h",
+  },
+  Dahshur: {
+    zh: "达舒尔",
+    en: "Dahshur",
+    local: "دهشور",
+    duration: "1-1.5h",
+  },
+  老开罗: {
+    zh: "老开罗",
+    en: "Old Cairo",
+    local: "مصر القديمة",
+    duration: "2-3h",
+  },
+  伊斯兰开罗: {
+    zh: "伊斯兰开罗",
+    en: "Islamic Cairo",
+    local: "القاهرة الإسلامية",
+    duration: "2-3h",
+  },
+  开罗机场: {
+    zh: "开罗国际机场",
+    en: "Cairo International Airport",
+    abbr: "CAI",
+    local: "مطار القاهرة الدولي",
+    duration: "国内 1.5-2h / 国际 3h",
+  },
+  阿斯旺: {
+    zh: "阿斯旺",
+    en: "Aswan",
+    abbr: "ASW",
+    local: "أسوان",
+    duration: "1.5-3h",
+  },
+  "Philae Temple": {
+    zh: "菲莱神庙",
+    en: "Philae Temple",
+    local: "معبد فيلة",
+    duration: "1.5-2h",
+  },
+  "Nubian Museum": {
+    zh: "努比亚博物馆",
+    en: "Nubian Museum",
+    local: "متحف النوبة",
+    duration: "1.5-2h",
+  },
+  阿布辛贝: {
+    zh: "阿布辛贝",
+    en: "Abu Simbel",
+    local: "أبو سمبل",
+    duration: "1.5-2h",
+  },
+  "Kom Ombo": {
+    zh: "康翁波神庙",
+    en: "Kom Ombo Temple",
+    local: "معبد كوم أمبو",
+    duration: "0.75-1h",
+  },
+  Edfu: {
+    zh: "埃德富神庙",
+    en: "Edfu Temple",
+    local: "معبد إدفو",
+    duration: "1-1.5h",
+  },
+  卢克索: {
+    zh: "卢克索",
+    en: "Luxor",
+    abbr: "LXR",
+    local: "الأقصر",
+    duration: "1.5-3h",
+  },
+  帝王谷: {
+    zh: "帝王谷",
+    en: "Valley of the Kings",
+    local: "وادي الملوك",
+    duration: "2-3h",
+  },
+  哈特谢普苏特神庙: {
+    zh: "哈特谢普苏特神庙",
+    en: "Mortuary Temple of Hatshepsut",
+    local: "معبد حتشبسوت",
+    duration: "1-1.5h",
+  },
+  门农巨像: {
+    zh: "门农巨像",
+    en: "Colossi of Memnon",
+    local: "تمثالا ممنون",
+    duration: "0.25h",
+  },
+  "Medinet Habu": {
+    zh: "哈布城",
+    en: "Medinet Habu",
+    local: "مدينة هابو",
+    duration: "1-1.5h",
+  },
+  Karnak: {
+    zh: "卡纳克神庙",
+    en: "Karnak Temple Complex",
+    local: "معبد الكرنك",
+    duration: "2-3h",
+  },
+  "Luxor Temple": {
+    zh: "卢克索神庙",
+    en: "Luxor Temple",
+    local: "معبد الأقصر",
+    duration: "1-1.5h",
+  },
+  Dendera: {
+    zh: "丹德拉神庙",
+    en: "Dendera Temple Complex",
+    local: "معبد دندرة",
+    duration: "1.5-2h",
+  },
+  红海度假区: {
+    zh: "红海度假区",
+    en: "Red Sea Resort Area",
+    local: "منطقة منتجعات البحر الأحمر",
+    duration: "半天起",
+  },
+  "Hurghada / Soma Bay": {
+    zh: "赫尔格达 / 索马湾",
+    en: "Hurghada / Soma Bay",
+    abbr: "HRG",
+    local: "الغردقة / سوما باي",
+    duration: "半天-全天",
+  },
+  红海海岸: {
+    zh: "红海海岸",
+    en: "Red Sea Coast",
+    local: "ساحل البحر الأحمر",
+    duration: "半天-全天",
+  },
+};
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -726,38 +997,215 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function renderComparison() {
+  if (!comparisonOverview || !comparisonTable) return;
+
+  comparisonOverview.innerHTML = planOrder.map((planKey) => renderPlanComparisonCard(planKey)).join("");
+  comparisonTable.innerHTML = renderDailyComparisonTable();
+  updateComparisonActive(activePlanKey);
+}
+
+function renderPlanComparisonCard(planKey) {
+  const plan = plans[planKey];
+  const meta = comparisonMeta[planKey];
+  const maxStay = Math.max(...Object.values(comparisonMeta).flatMap((entry) => entry.stays.map(([, days]) => days)));
+
+  return `
+    <article class="comparison-card" data-compare-plan="${escapeHtml(planKey)}">
+      <div class="comparison-card-head">
+        <div>
+          <p>${escapeHtml(meta.label)}</p>
+          <h3>${escapeHtml(meta.shortName)}</h3>
+        </div>
+        <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}">查看</button>
+      </div>
+      <div class="metric-strip">
+        ${meta.metrics
+          .map(
+            ([name, value]) => `
+              <div>
+                <span>${escapeHtml(name)}</span>
+                <strong>${escapeHtml(value)}</strong>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+      <div class="pros-cons-grid">
+        <section>
+          <h4>Pros</h4>
+          <ul>${meta.pros.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+        <section>
+          <h4>Cons</h4>
+          <ul>${meta.cons.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+      </div>
+      <section class="note-list">
+        <h4>注意事项</h4>
+        <ul>${meta.notes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </section>
+      <section class="stay-list">
+        <h4>城市停留</h4>
+        ${meta.stays
+          .map(
+            ([city, days]) => `
+              <div class="stay-row">
+                <span>${escapeHtml(city)}</span>
+                <div class="stay-meter" aria-hidden="true"><i style="width: ${(days / maxStay) * 100}%"></i></div>
+                <strong>${escapeHtml(days)} 天</strong>
+              </div>
+            `
+          )
+          .join("")}
+      </section>
+    </article>
+  `;
+}
+
+function renderDailyComparisonTable() {
+  const dates = plans.abu.days.map((day, index) => ({
+    day: day.day,
+    date: day.date,
+    index,
+  }));
+
+  return `
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th scope="col">日期</th>
+          ${planOrder
+            .map(
+              (planKey) => `
+                <th scope="col" data-compare-plan="${escapeHtml(planKey)}">
+                  <button class="compare-plan-heading" type="button" data-plan="${escapeHtml(planKey)}">
+                    <span>${escapeHtml(comparisonMeta[planKey].label)}</span>
+                    <strong>${escapeHtml(comparisonMeta[planKey].shortName)}</strong>
+                  </button>
+                </th>
+              `
+            )
+            .join("")}
+        </tr>
+      </thead>
+      <tbody>
+        ${dates
+          .map(
+            ({ day, date, index }) => `
+              <tr>
+                <th scope="row">
+                  <strong>${escapeHtml(day)}</strong>
+                  <span>${escapeHtml(date)}</span>
+                </th>
+                ${planOrder.map((planKey) => renderDailyComparisonCell(planKey, index)).join("")}
+              </tr>
+            `
+          )
+          .join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderDailyComparisonCell(planKey, dayIndex) {
+  const day = plans[planKey].days[dayIndex];
+  if (!day) return `<td data-compare-plan="${escapeHtml(planKey)}"></td>`;
+
+  return `
+    <td data-compare-plan="${escapeHtml(planKey)}">
+      <div class="comparison-day-cell">
+        <p>${escapeHtml(day.city)}</p>
+        <strong>${escapeHtml(day.title)}</strong>
+        <span>${escapeHtml(day.tags.slice(0, 3).join(" · "))}</span>
+      </div>
+    </td>
+  `;
+}
+
+function updateComparisonActive(planKey) {
+  document.querySelectorAll("[data-compare-plan]").forEach((node) => {
+    node.classList.toggle("is-active", node.dataset.comparePlan === planKey);
+  });
+}
+
+function getTransitNote(day) {
+  const text = `${day.title} ${day.city} ${day.morning} ${day.afternoon} ${day.evening}`;
+  if (text.includes("开罗城市日") && text.includes("阿斯旺")) {
+    return "跨城交通：开罗飞阿斯旺约 1h20m；包车约 10-12h，不建议当天这样走。";
+  }
+  if (text.includes("晚飞卢克索")) {
+    return "跨城交通：开罗飞卢克索约 1h；若包车约 8-9h，不建议当天这样走。";
+  }
+  if (text.includes("晚飞阿斯旺")) {
+    return "跨城交通：开罗飞阿斯旺约 1h20m；包车约 10-12h，不建议当天这样走。";
+  }
+  if (text.includes("阿布辛贝一日")) {
+    return "跨城交通：阿斯旺往返阿布辛贝包车约 6-7h；若遇到合适航班，单程飞行约 45m。";
+  }
+  if (text.includes("阿斯旺包车北上卢克索")) {
+    return "跨城交通：阿斯旺到卢克索包车约 4-5h；加 Kom Ombo、Edfu 停留后按全天转场估算。";
+  }
+  if (text.includes("卢克索到红海") || text.includes("上午去红海")) {
+    return "跨城交通：卢克索到红海包车约 4.5-5h；若绕到机场飞行衔接通常不如包车直接。";
+  }
+  if (text.includes("红海回开罗")) {
+    return "跨城交通：红海飞开罗约 1h；包车约 5-6h，建议优先看航班。";
+  }
+  if (text.includes("提前回开罗")) {
+    return "跨城交通：红海飞开罗约 1h；包车约 5-6h，若要留缓冲可提前一晚回。";
+  }
+  if (text.includes("早班机回开罗") || text.includes("红海飞开罗")) {
+    return "跨城交通：红海飞开罗约 1h；包车约 5-6h，返程日优先选早班机。";
+  }
+  if (text.includes("从红海或开罗返程")) {
+    return "跨城交通：若当天从红海出发，飞开罗约 1h；包车约 5-6h。";
+  }
+
+  return "";
+}
+
+function getDayAdvice(day) {
+  const text = [...day.tags, day.title, day.morning, day.afternoon, day.evening].join(" ");
+  let advice = "只保留当天主线，临时加点以体力和交通余量为准。";
+  if (text.includes("早班机")) advice = "优先选更早到 CAI 的航班，到开罗后直接按国际出发节奏走。";
+  else if (text.includes("阿布辛贝")) advice = "早起强度高，当天只保留阿布辛贝，不再叠加重项目。";
+  else if (text.includes("夜飞")) advice = "下午开始收束行程，给取行李、去机场和航班延误留余量。";
+  else if (text.includes("强执行")) advice = "建议包车或导游，减少现场沟通成本，按主线看不贪多。";
+  else if (text.includes("转场")) advice = "转场日按半天移动估算，到酒店后不再排硬项目。";
+  else if (text.includes("红海")) advice = "这天的价值是恢复体力，避免再加长途或高强度项目。";
+  else if (text.includes("卢克索")) advice = "古迹密度高，抓核心点，午后留出酒店恢复时间。";
+  else if (text.includes("开罗城市")) advice = "城市线只选一条主线，不把老开罗、伊斯兰开罗和博物馆全塞满。";
+
+  const transitNote = getTransitNote(day);
+  return transitNote ? `${advice} ${transitNote}` : advice;
+}
+
+function renderPlaceTrail(day) {
+  return day.places
+    .map(
+      (place, index) => `
+        ${index > 0 ? `<span class="route-separator" aria-hidden="true">→</span>` : ""}
+        <button class="place-button" type="button" data-place-id="${escapeHtml(place.id)}">${escapeHtml(place.name)}</button>
+      `
+    )
+    .join("");
+}
+
 function renderTimeline(plan) {
   timeline.innerHTML = plan.days
     .map(
       (day) => `
         <article class="day-card" id="${day.day}">
-          <div>
-            <div class="day-number">${escapeHtml(day.day)}</div>
+          <div class="day-card-head">
+            <span class="day-number">${escapeHtml(day.day)}</span>
             <span class="day-meta">${escapeHtml(day.date)} · ${escapeHtml(day.city)}</span>
           </div>
-          <div>
-            <h3 class="day-title">${escapeHtml(day.title)}</h3>
-            <div class="place-list" aria-label="${escapeHtml(day.day)} 地点">
-              ${day.places.map((place) => `<button class="place-button" type="button" data-place-id="${escapeHtml(place.id)}">${escapeHtml(place.name)}</button>`).join("")}
-            </div>
-            <div class="day-grid">
-              <div class="day-block">
-                <span>上午</span>
-                <p>${escapeHtml(day.morning)}</p>
-              </div>
-              <div class="day-block">
-                <span>下午</span>
-                <p>${escapeHtml(day.afternoon)}</p>
-              </div>
-              <div class="day-block">
-                <span>晚上</span>
-                <p>${escapeHtml(day.evening)}</p>
-              </div>
-            </div>
-            <div class="day-footer">
-              ${day.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
-            </div>
+          <h3 class="day-title">${escapeHtml(day.title)}</h3>
+          <div class="route-trail" aria-label="${escapeHtml(day.day)} 可点击地点">
+            ${renderPlaceTrail(day)}
           </div>
+          <p class="day-advice">${escapeHtml(getDayAdvice(day))}</p>
         </article>
       `
     )
@@ -834,14 +1282,27 @@ function renderMap(plan) {
   placeSource.clear();
   placeFeatures.clear();
   activePlaceId = null;
+  activeRouteDayId = null;
 
-  const routeFeature = new ol.Feature({
+  const fullRouteFeature = new ol.Feature({
     geometry: new ol.geom.LineString(plan.route.map(toMapCoord)),
   });
-  routeSource.addFeature(routeFeature);
-  currentRouteExtent = routeFeature.getGeometry().getExtent();
+  currentRouteExtent = fullRouteFeature.getGeometry().getExtent();
 
+  let previousPlace = null;
   plan.days.forEach((day) => {
+    if (previousPlace && day.places.length > 0) {
+      addRouteSegment(day.day, [previousPlace.coords, day.places[0].coords], "transit");
+    }
+
+    if (day.places.length > 1) {
+      addRouteSegment(
+        day.day,
+        day.places.map((place) => place.coords),
+        "day"
+      );
+    }
+
     day.places.forEach((place) => {
       const feature = new ol.Feature({
         geometry: new ol.geom.Point(toMapCoord(place.coords)),
@@ -854,10 +1315,24 @@ function renderMap(plan) {
       placeSource.addFeature(feature);
       placeFeatures.set(place.id, { feature, dayId: day.day, day, place });
     });
+
+    if (day.places.length > 0) {
+      previousPlace = day.places[day.places.length - 1];
+    }
   });
 
   clearActivePlace();
   scheduleMapRefresh({ fitRoute: true });
+}
+
+function addRouteSegment(dayId, coords, routeType) {
+  if (coords.length < 2) return;
+  const feature = new ol.Feature({
+    geometry: new ol.geom.LineString(coords.map(toMapCoord)),
+    dayId,
+    routeType,
+  });
+  routeSource.addFeature(feature);
 }
 
 function scheduleMapRefresh(options = {}) {
@@ -882,15 +1357,36 @@ function toMapCoord(latLng) {
   return ol.proj.fromLonLat([latLng[1], latLng[0]]);
 }
 
-function routeStyle() {
+function routeStyle(feature) {
+  const isInactive = activeRouteDayId && feature.get("dayId") !== activeRouteDayId;
+  const routeType = feature.get("routeType");
   return new ol.style.Style({
     stroke: new ol.style.Stroke({
-      color: getToken("--route"),
-      width: 5,
+      color: getRouteColor(isInactive ? 0.3 : 1),
+      width: routeType === "transit" ? 4 : 5,
       lineCap: "round",
       lineJoin: "round",
     }),
   });
+}
+
+function getRouteColor(alpha) {
+  const color = getToken("--route");
+  if (!color.startsWith("#")) return color;
+
+  const hex = color.slice(1);
+  const normalized =
+    hex.length === 3
+      ? hex
+          .split("")
+          .map((char) => char + char)
+          .join("")
+      : hex;
+  const value = Number.parseInt(normalized, 16);
+  const red = (value >> 16) & 255;
+  const green = (value >> 8) & 255;
+  const blue = value & 255;
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
 function pointStyle(feature) {
@@ -951,6 +1447,38 @@ function getToken(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
+function getPlaceNameMeta(placeName) {
+  return (
+    placeNameMeta[placeName] ?? {
+      zh: placeName,
+      en: placeName,
+      local: "待确认",
+      duration: "按当天节奏",
+    }
+  );
+}
+
+function renderPlaceNames(names) {
+  const rows = [
+    ["中文", names.zh],
+    ["English", names.en],
+    ["缩写", names.abbr],
+    ["埃及阿语", names.local],
+    ["推荐游览", names.duration],
+  ].filter(([, value]) => value);
+
+  return rows
+    .map(
+      ([label, value]) => `
+        <div>
+          <dt>${escapeHtml(label)}</dt>
+          <dd>${escapeHtml(value)}</dd>
+        </div>
+      `
+    )
+    .join("");
+}
+
 function buildPlaceInsight(entry) {
   const { day, place } = entry;
   const insight = placeInsights[place.name] ?? {
@@ -959,8 +1487,8 @@ function buildPlaceInsight(entry) {
   };
 
   return {
-    kicker: `${day.day} · ${day.date} · ${day.city}`,
     title: place.name,
+    names: getPlaceNameMeta(place.name),
     description: insight.description,
     reason: insight.reason,
   };
@@ -968,8 +1496,8 @@ function buildPlaceInsight(entry) {
 
 function updatePlaceInsight(entry) {
   const insight = buildPlaceInsight(entry);
-  placeInsightKicker.textContent = insight.kicker;
   placeInsightTitle.textContent = insight.title;
+  if (placeInsightNames) placeInsightNames.innerHTML = renderPlaceNames(insight.names);
   placeInsightDescription.textContent = insight.description;
   placeInsightReason.textContent = insight.reason;
   placeInsightCard.hidden = false;
@@ -977,6 +1505,8 @@ function updatePlaceInsight(entry) {
 
 function clearActivePlace(options = {}) {
   activePlaceId = null;
+  activeRouteDayId = null;
+  routeLayer?.changed();
   placeLayer?.changed();
   document.querySelectorAll(".place-button.is-active").forEach((button) => button.classList.remove("is-active"));
   document.querySelectorAll(".day-card.is-active").forEach((card) => card.classList.remove("is-active"));
@@ -992,6 +1522,8 @@ function activatePlace(placeId, options = {}) {
   if (!entry || !map) return;
 
   activePlaceId = placeId;
+  activeRouteDayId = entry.dayId;
+  routeLayer.changed();
   placeLayer.changed();
 
   document.querySelectorAll(".place-button").forEach((button) => {
@@ -1013,30 +1545,71 @@ function activatePlace(placeId, options = {}) {
   }
 }
 
+function closePlanMenu() {
+  if (!planMenuButton || !planMenuList) return;
+  planMenuList.hidden = true;
+  planMenuButton.setAttribute("aria-expanded", "false");
+  planMenu?.classList.remove("is-open");
+}
+
+function togglePlanMenu() {
+  if (!planMenuButton || !planMenuList) return;
+  const shouldOpen = planMenuList.hidden;
+  planMenuList.hidden = !shouldOpen;
+  planMenuButton.setAttribute("aria-expanded", String(shouldOpen));
+  planMenu?.classList.toggle("is-open", shouldOpen);
+}
+
+function updatePlanMenuActive(planKey) {
+  planMenuOptions.forEach((option) => {
+    const isActive = option.dataset.plan === planKey;
+    option.classList.toggle("is-active", isActive);
+    option.setAttribute("aria-selected", String(isActive));
+  });
+
+  if (planMenuButton) {
+    const activeLabel = planMenuLabels[planKey] ?? "其他行程方案";
+    planMenuButton.innerHTML = `
+      <span>${escapeHtml(activeLabel)}</span>
+      <span class="menu-caret" aria-hidden="true"></span>
+    `;
+  }
+}
+
 function renderPlan(planKey) {
   const plan = plans[planKey];
   activePlanKey = planKey;
 
-  title.textContent = plan.title;
-  summary.textContent = plan.summary;
-  completeness.textContent = plan.scores.completeness;
-  ease.textContent = plan.scores.ease;
-  transit.textContent = plan.scores.transit;
-  verdict.textContent = plan.verdict;
-  intro.textContent = plan.intro;
+  if (title) title.textContent = plan.title;
+  if (summary) summary.textContent = plan.summary;
+  if (completeness) completeness.textContent = plan.scores.completeness;
+  if (ease) ease.textContent = plan.scores.ease;
+  if (transit) transit.textContent = plan.scores.transit;
+  if (verdict) verdict.textContent = plan.verdict;
+  if (intro) intro.textContent = plan.intro;
 
-  tabs.forEach((tab) => {
-    const isActive = tab.dataset.plan === planKey;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-  });
+  updatePlanMenuActive(planKey);
 
+  updateComparisonActive(planKey);
   renderTimeline(plan);
   renderMap(plan);
 }
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => renderPlan(tab.dataset.plan));
+planMenuButton?.addEventListener("click", togglePlanMenu);
+
+planMenuList?.addEventListener("click", (event) => {
+  const option = event.target.closest(".plan-menu-option");
+  if (!option) return;
+  renderPlan(option.dataset.plan);
+  closePlanMenu();
+});
+
+document.addEventListener("click", (event) => {
+  if (!planMenu?.contains(event.target)) closePlanMenu();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closePlanMenu();
 });
 
 timeline.addEventListener("click", (event) => {
@@ -1045,8 +1618,32 @@ timeline.addEventListener("click", (event) => {
   activatePlace(button.dataset.placeId);
 });
 
+comparisonOverview?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-plan]");
+  if (!button) return;
+  renderPlan(button.dataset.plan);
+});
+
+comparisonTable?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-plan]");
+  if (!button) return;
+  renderPlan(button.dataset.plan);
+});
+
+compareToggleButton?.addEventListener("click", () => {
+  closePlanMenu();
+  comparisonDialog?.showModal();
+});
+
+comparisonClose?.addEventListener("click", () => comparisonDialog?.close());
+
+comparisonDialog?.addEventListener("click", (event) => {
+  if (event.target === comparisonDialog) comparisonDialog.close();
+});
+
 placeInsightClose.addEventListener("click", () => clearActivePlace());
 fitRouteButton.addEventListener("click", () => clearActivePlace({ fitRoute: true }));
 
 initMap();
+renderComparison();
 renderPlan(activePlanKey);
