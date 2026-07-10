@@ -1,6 +1,6 @@
 const plans = {
   abu: {
-    title: "A. 开罗 2.5 天 + 阿布辛贝",
+    title: "A. 推荐方案",
     summary:
       "在 C 版基础上把开罗拉到 2.5 天：落地下午看 GEM，第二天金字塔线，第三天补开罗城市面，再晚飞阿斯旺。",
     verdict:
@@ -205,23 +205,31 @@ const plans = {
     ],
   },
   lean: {
-    title: "C. 无阿布辛贝版",
+    title: "C. 加马特鲁",
     summary:
-      "更像你的节奏。开罗和卢克索主线打稳，把阿斯旺和阿布辛贝让出去，换回完整红海恢复段。",
+      "把马特鲁插进中段做审美换气，南线仍保阿布辛贝；后半程不再绕沙姆，而是改成更顺路的 Soma Bay / Hurghada 收尾。",
     verdict:
-      "适合你想让这趟旅行真的有感受力。少一点完整感，但身体节奏更稳，红海也不再只是匆匆路过。",
+      "适合你怕连续神庙疲劳、又不想完全牺牲文明高光的人。代价是前半程转场多，但后半程终于能真的放松下来。",
     scores: {
-      completeness: "中高",
-      ease: "高",
-      transit: "中",
+      completeness: "高",
+      ease: "中",
+      transit: "高",
     },
     intro:
-      "这版减少大转场，把精力留给开罗、卢克索和红海。它不是少玩，而是把第一次埃及的主线和恢复段都保住。",
+      "这版用马特鲁打断开罗到南线的连续文物输入，再用更顺路的红海西岸收尾，避免为了海边再专门绕去西奈。",
     route: [
       [30.0444, 31.2357],
+      [30.0061, 31.2308],
+      [29.8713, 31.2165],
       [29.9773, 31.1325],
+      [31.3543, 27.2373],
+      [24.0889, 32.8998],
+      [22.3372, 31.6258],
+      [24.025, 32.8841],
+      [24.9781, 32.8735],
       [25.6872, 32.6396],
       [26.1419, 32.6709],
+      [25.7188, 32.6573],
       [27.2579, 33.8116],
       [30.0444, 31.2357],
     ],
@@ -229,70 +237,126 @@ const plans = {
       {
         day: "D1",
         date: "9/25 周五",
-        title: "抵达开罗，轻量进入埃及",
+        title: "抵达开罗，老城与博物馆主线",
         city: "开罗",
         coords: [30.0444, 31.2357],
-        morning: "抵达开罗，完成入境和酒店入住。",
-        afternoon: "只安排恢复。可以在 Zamalek 或尼罗河边轻轻走一段。",
-        evening: "简单晚饭，早点睡。第一天不用证明什么。",
-        tags: ["入住", "低强度", "开罗"],
+        morning: "清晨抵达开罗，完成入境和酒店入住。今天只抓萨拉丁城堡 / 阿里清真寺、文明博物馆、老博物馆三条主线，不再额外塞夜项目。",
+        afternoon: "城堡和文明博物馆之后回到市区，按体力决定老博物馆停留时长。若状态一般，可把哈利利放成可选。",
+        evening: "早点回酒店，把时差和落地日体力留给第二天的金字塔线。",
+        tags: ["落地日", "开罗核心", "控强度"],
         places: [
           { id: "lean-cairo", name: "开罗市区", coords: [30.0444, 31.2357] },
-          { id: "lean-zamalek", name: "Zamalek", coords: [30.0611, 31.2197] },
+          { id: "lean-citadel", name: "萨拉丁城堡", coords: [30.0299, 31.2619] },
+          { id: "lean-nmec", name: "文明博物馆", coords: [30.0079, 31.247] },
+          { id: "lean-egyptian-museum", name: "老埃及博物馆", coords: [30.0478, 31.2336] },
         ],
       },
       {
         day: "D2",
         date: "9/26 周六",
-        title: "GEM，大埃及博物馆",
-        city: "吉萨",
-        coords: [29.9937, 31.1194],
-        morning: "Grand Egyptian Museum。上午先看最核心展陈。",
-        afternoon: "继续 GEM，给图坦卡蒙和主线文物留足时间。",
-        evening: "回城吃饭，轻松散步。",
-        tags: ["博物馆", "古埃及主线", "建议预约"],
-        places: [{ id: "lean-gem", name: "GEM", coords: [29.9937, 31.1194] }],
-      },
-      {
-        day: "D3",
-        date: "9/27 周日",
-        title: "吉萨金字塔群和狮身人面像",
-        city: "吉萨",
-        coords: [29.9773, 31.1325],
-        morning: "吉萨高原和金字塔群。建议请导游，减少现场消耗。",
-        afternoon: "狮身人面像和观景点收尾。",
-        evening: "回酒店休息，避免继续硬塞。",
-        tags: ["必看", "建议导游", "高热量日"],
+        title: "Saqqara、孟菲斯与吉萨高原",
+        city: "开罗与吉萨",
+        coords: [29.8713, 31.2165],
+        morning: "先去 Saqqara 区，看阶梯金字塔、宰相墓一类最值得看的点，再顺路补孟菲斯。",
+        afternoon: "下午进入吉萨高原，抓金字塔群和狮身人面像，拍完日落前离开。",
+        evening: "回酒店休息。今天已经是高热量日，不再额外加夜景。",
+        tags: ["金字塔线", "建议包车", "高热量日"],
         places: [
+          { id: "lean-saqqara", name: "Saqqara", coords: [29.8713, 31.2165] },
+          { id: "lean-memphis", name: "孟菲斯", coords: [29.8489, 31.2547] },
           { id: "lean-giza", name: "吉萨金字塔群", coords: [29.9773, 31.1325] },
           { id: "lean-sphinx", name: "狮身人面像", coords: [29.9753, 31.1376] },
         ],
       },
       {
+        day: "D3",
+        date: "9/27 周日",
+        title: "开罗去马特鲁，切换成地中海段",
+        city: "马特鲁",
+        coords: [31.3543, 27.2373],
+        morning: "优先争取开罗飞马特鲁的短航段；如果班次不顺，再退回包车或大巴方案。今天的目标不是拼景点，而是尽快切到海边。",
+        afternoon: "入住后去 Cleopatra Beach、Sea Eye 或酒店附近海滩，恢复眼睛和身体感。",
+        evening: "在海边看日落，把旅行从连续古迹切成完全不同的章节。",
+        tags: ["转场", "马特鲁", "换气"],
+        places: [
+          { id: "lean-matruh", name: "Marsa Matruh", coords: [31.3543, 27.2373] },
+          { id: "lean-cleopatra", name: "Cleopatra Beach", coords: [31.3314, 27.1971] },
+          { id: "lean-sea-eye", name: "Sea Eye", coords: [31.3157, 27.1551] },
+        ],
+      },
+      {
         day: "D4",
         date: "9/28 周一",
-        title: "Saqqara / Dahshur，夜飞卢克索",
-        city: "开罗到卢克索",
-        coords: [29.8713, 31.2165],
-        morning: "Saqqara 和 Dahshur 半日，补上金字塔体系的前史。",
-        afternoon: "回开罗取行李，预留机场时间。",
-        evening: "飞卢克索，抵达后入住。",
-        tags: ["转场", "古迹", "夜飞"],
+        title: "马特鲁半日，晚转阿斯旺",
+        city: "马特鲁到阿斯旺",
+        coords: [31.3543, 27.2373],
+        morning: "留半天给 Ageeba Beach 一类最想看的海岸线，别把海滩点全打卡，只选一到两个最喜欢的。",
+        afternoon: "中午后返回机场或回开罗中转。今天会是这版里最折腾的一天，要把预期放成交通日。",
+        evening: "晚抵阿斯旺后直接入住，尽量不再加城内行程。",
+        tags: ["马特鲁", "交通日", "夜飞"],
         places: [
-          { id: "lean-saqqara", name: "Saqqara", coords: [29.8713, 31.2165] },
-          { id: "lean-dahshur", name: "Dahshur", coords: [29.8069, 31.2086] },
+          { id: "lean-ageeba", name: "Ageeba Beach", coords: [31.2402, 27.1544] },
+          { id: "lean-matruh-airport", name: "马特鲁 / 开罗中转", coords: [31.3254, 27.2217] },
+          { id: "lean-aswan-arrive", name: "阿斯旺", coords: [24.0889, 32.8998] },
         ],
       },
       {
         day: "D5",
         date: "9/29 周二",
-        title: "卢克索西岸",
+        title: "阿斯旺包车去阿布辛贝",
+        city: "阿布辛贝",
+        coords: [22.3372, 31.6258],
+        morning: "从阿斯旺出发前往阿布辛贝。今天把它当成文明高光日，不再试图兼顾太多别的内容。",
+        afternoon: "抵达后入住，按体力看是否先休息或在周边慢走。",
+        evening: "如果你们愿意，可把灯光秀作为可选项；否则就早点睡，第二天正看神庙。",
+        tags: ["阿布辛贝", "高光", "可住一晚"],
+        places: [
+          { id: "lean-aswan-out", name: "阿斯旺", coords: [24.0889, 32.8998] },
+          { id: "lean-abu-simbel", name: "阿布辛贝", coords: [22.3372, 31.6258] },
+        ],
+      },
+      {
+        day: "D6",
+        date: "9/30 周三",
+        title: "返回阿斯旺，菲莱神庙和尼罗河日落",
+        city: "阿斯旺",
+        coords: [24.025, 32.8841],
+        morning: "早起看阿布辛贝正面，之后返回阿斯旺。若体力一般，抵达后先回酒店休整。",
+        afternoon: "傍晚前去菲莱神庙，今天只保这一条最值得的阿斯旺主线。",
+        evening: "日落时段坐一小段 felucca，让阿斯旺真正起到缓冲作用。",
+        tags: ["Philae", "felucca", "缓冲日"],
+        places: [
+          { id: "lean-abu-simbel-return", name: "阿布辛贝", coords: [22.3372, 31.6258] },
+          { id: "lean-philae", name: "Philae Temple", coords: [24.025, 32.8841] },
+          { id: "lean-felucca", name: "尼罗河 felucca", coords: [24.0908, 32.8984] },
+        ],
+      },
+      {
+        day: "D7",
+        date: "10/1 周四",
+        title: "前往卢克索，中途看 Edfu 和 Esna",
+        city: "阿斯旺到卢克索",
+        coords: [24.9781, 32.8735],
+        morning: "从阿斯旺包车北上。Edfu 和 Esna 只当顺路加分，不必两个都深看。",
+        afternoon: "继续前往卢克索，入住后稍作休息。",
+        evening: "夜游卢克索神庙，把这天收在气氛最好的一站。",
+        tags: ["转场", "Edfu", "Luxor Temple"],
+        places: [
+          { id: "lean-edfu", name: "Edfu", coords: [24.9781, 32.8735] },
+          { id: "lean-esna", name: "Esna", coords: [25.2934, 32.554] },
+          { id: "lean-luxor-temple", name: "Luxor Temple", coords: [25.6995, 32.6391] },
+        ],
+      },
+      {
+        day: "D8",
+        date: "10/2 周五",
+        title: "卢克索西岸整日",
         city: "卢克索",
         coords: [25.7402, 32.6014],
-        morning: "帝王谷。建议请导游，重点看几座墓，不用追求数量。",
-        afternoon: "哈特谢普苏特神庙、门农巨像。状态好可加 Medinet Habu。",
-        evening: "酒店恢复。卢克索这段住舒服一点很值。",
-        tags: ["建议导游", "帝王谷", "西岸"],
+        morning: "卢克索西岸整天只抓真正想看的：帝王谷、哈特谢普苏特、哈布城、工匠墓 / 贵族墓里择重点，不追求全收。",
+        afternoon: "下午回酒店恢复，给第二天的丹德拉 / Karnak 留体力。",
+        evening: "晚上只保留轻量晚饭或尼罗河边散步，不再加转场。",
+        tags: ["西岸", "高密度古迹", "不给转场叠压"],
         places: [
           { id: "lean-valley-kings", name: "帝王谷", coords: [25.7402, 32.6014] },
           { id: "lean-hatshepsut", name: "哈特谢普苏特神庙", coords: [25.7386, 32.6066] },
@@ -300,99 +364,66 @@ const plans = {
         ],
       },
       {
-        day: "D6",
-        date: "9/30 周三",
-        title: "Karnak 和 Luxor Temple",
-        city: "卢克索",
-        coords: [25.7188, 32.6573],
-        morning: "Karnak。慢慢看柱厅和神庙尺度。",
-        afternoon: "回酒店休息，不安排密集转场。",
-        evening: "Luxor Temple 傍晚到夜里去。",
-        tags: ["Karnak", "Luxor Temple", "留白"],
-        places: [
-          { id: "lean-karnak", name: "Karnak", coords: [25.7188, 32.6573] },
-          { id: "lean-luxor-temple", name: "Luxor Temple", coords: [25.6995, 32.6391] },
-        ],
-      },
-      {
-        day: "D7",
-        date: "10/1 周四",
-        title: "Dendera 半日或卢克索慢走",
-        city: "Dendera",
-        coords: [26.1419, 32.6709],
-        morning: "如果状态好，包车去 Dendera Temple of Hathor。",
-        afternoon: "回卢克索后休息。若前几天累，这天可直接改成酒店和尼罗河边慢走。",
-        evening: "轻松晚饭，为红海段留体力。",
-        tags: ["弹性日", "Dendera", "可替换"],
-        places: [{ id: "lean-dendera", name: "Dendera", coords: [26.1419, 32.6709] }],
-      },
-      {
-        day: "D8",
-        date: "10/2 周五",
-        title: "卢克索到红海",
-        city: "红海",
-        coords: [27.2579, 33.8116],
-        morning: "从卢克索去红海，建议住 Soma Bay / Makadi Bay / El Gouna 这类更适合休息的区域。",
-        afternoon: "入住海边酒店，不排项目。",
-        evening: "海边晚饭，切换到度假节奏。",
-        tags: ["转场", "红海", "休息"],
-        places: [{ id: "lean-red-sea", name: "红海度假区", coords: [27.2579, 33.8116] }],
-      },
-      {
         day: "D9",
         date: "10/3 周六",
-        title: "红海整日",
-        city: "红海",
-        coords: [27.2579, 33.8116],
-        morning: "你躺海边或轻浮潜，男友安排潜水。",
-        afternoon: "继续休息，可以做 SPA 或只看海。",
-        evening: "海边晚餐。",
-        tags: ["潜水", "浮潜", "恢复"],
-        places: [{ id: "lean-hurghada-1", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] }],
+        title: "丹德拉和 Karnak，晚飞红海",
+        city: "卢克索到红海",
+        coords: [26.1419, 32.6709],
+        morning: "如果你们想保丹德拉，就把它放到今天清晨半日，再回来抓 Karnak 核心柱厅。",
+        afternoon: "把卢克索线正式收口，不再追加别的博物馆或神庙。",
+        evening: "晚些去 Hurghada / Soma Bay 酒店。优先国内航班，其次包车直达。",
+        tags: ["Dendera", "Karnak", "夜转红海"],
+        places: [
+          { id: "lean-dendera", name: "Dendera", coords: [26.1419, 32.6709] },
+          { id: "lean-karnak", name: "Karnak", coords: [25.7188, 32.6573] },
+          { id: "lean-red-sea-night", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] },
+        ],
       },
       {
         day: "D10",
         date: "10/4 周日",
-        title: "红海第二整日",
+        title: "红海整日出海",
         city: "红海",
         coords: [27.2579, 33.8116],
-        morning: "继续海边恢复。若前一天潜水，这天适合更松。",
-        afternoon: "轻浮潜、泳池、读书或发呆。",
-        evening: "不赶路，保住这趟的身体感。",
-        tags: ["完整休息日", "红海", "低强度"],
-        places: [{ id: "lean-hurghada-2", name: "红海海岸", coords: [27.2579, 33.8116] }],
+        morning: "安排出海、浮潜或深潜，把红海项目集中放在这一天。",
+        afternoon: "继续海上项目，或者下午回酒店泳池和海边恢复。",
+        evening: "轻松吃饭，不再安排城市打卡。",
+        tags: ["出海", "浮潜", "红海完整日"],
+        places: [{ id: "lean-red-sea-boat", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] }],
       },
       {
         day: "D11",
         date: "10/5 周一",
-        title: "红海机动日",
+        title: "红海完整日 2",
         city: "红海",
         coords: [27.2579, 33.8116],
-        morning: "半天继续休息，或补一个轻量海上项目。",
-        afternoon: "根据 10/6 航班决定是否提前回开罗。",
-        evening: "如果国际航班衔接紧，建议今晚回开罗住一晚。",
-        tags: ["机动", "缓冲", "返程准备"],
+        morning: "酒店海边、轻浮潜、SPA 或什么都不做，把这天当真正的恢复日。",
+        afternoon: "继续留在 Hurghada / Soma Bay，不再安排长途项目。",
+        evening: "早点收行李，为第二天早班机回开罗留体力。",
+        tags: ["躺平", "红海第二日", "返程准备"],
         places: [
-          { id: "lean-red-sea-buffer", name: "红海度假区", coords: [27.2579, 33.8116] },
-          { id: "lean-cairo-buffer", name: "开罗", coords: [30.0444, 31.2357] },
+          { id: "lean-red-sea-rest", name: "红海海岸", coords: [27.2579, 33.8116] },
         ],
       },
       {
         day: "D12",
         date: "10/6 周二",
-        title: "从埃及返程",
+        title: "早班机回开罗，15:00 返程",
         city: "返程",
-        coords: [30.0444, 31.2357],
-        morning: "红海飞开罗或已在开罗，按国际航班办理返程。",
-        afternoon: "预留足够转机和出境时间。",
+        coords: [30.1219, 31.4056],
+        morning: "从红海飞开罗，优先选 07:40 或 09:45 到达 CAI 的航班，给重新值机和出境留余量。",
+        afternoon: "15:00 从开罗起飞，经阿布扎比转机。",
         evening: "从埃及返程，10/7 国内落地。",
-        tags: ["返程", "预留缓冲", "10/7 到家"],
-        places: [{ id: "lean-cairo-airport", name: "开罗机场", coords: [30.1219, 31.4056] }],
+        tags: ["早班机", "开罗机场", "10/7 到家"],
+        places: [
+          { id: "lean-red-sea-final", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] },
+          { id: "lean-cairo-airport", name: "开罗机场", coords: [30.1219, 31.4056] },
+        ],
       },
     ],
   },
   doubao: {
-    title: "B. 原 C：豆包修正版",
+    title: "B. 豆包方案",
     summary:
       "基于豆包方案微调：GEM 放到落地日下午，阿斯旺到卢克索改为包车北上。完整度高，同时保住红海两个完整日。",
     verdict:
@@ -592,19 +623,229 @@ const plans = {
       },
     ],
   },
+  cruise: {
+    title: "D. 坐邮轮",
+    summary:
+      "在推荐方案基础上，把阿斯旺到卢克索的地面转场换成 3 晚尼罗河邮轮。低优先级点允许让位给航行和休息，减少连续赶路和连续神庙疲劳。",
+    verdict:
+      "适合你想保阿布辛贝，但又想让南线少一点硬转场、多一点水上恢复感。对这趟 12 天框架来说，3 晚邮轮比 4 晚更平衡。",
+    scores: {
+      completeness: "高",
+      ease: "高",
+      transit: "中",
+    },
+    intro:
+      "尼罗河邮轮通常走 Aswan 到 Luxor 的 3-4 晚经典线，Kom Ombo 和 Edfu 由船上节奏自然串起来。这一版主动接受少看一点支线，换取更像旅行而不是拉练的体感。",
+    route: [
+      [30.0444, 31.2357],
+      [29.9937, 31.1194],
+      [29.9773, 31.1325],
+      [29.8713, 31.2165],
+      [24.0889, 32.8998],
+      [22.3372, 31.6258],
+      [24.025, 32.8841],
+      [24.4529, 32.9283],
+      [24.9781, 32.8735],
+      [25.6872, 32.6396],
+      [27.2579, 33.8116],
+      [30.0444, 31.2357],
+    ],
+    days: [
+      {
+        day: "D1",
+        date: "9/25 周五",
+        title: "抵达开罗，下午 GEM",
+        city: "开罗",
+        coords: [30.0444, 31.2357],
+        morning: "清晨抵达开罗，入境和酒店入住。今天只保 GEM 一个主内容。",
+        afternoon: "前往 GEM，把古埃及主线先看明白。",
+        evening: "轻量吃饭，早点休息。",
+        tags: ["落地日", "GEM", "轻量"],
+        places: [
+          { id: "cruise-cairo", name: "开罗市区", coords: [30.0444, 31.2357] },
+          { id: "cruise-gem", name: "GEM", coords: [29.9937, 31.1194] },
+        ],
+      },
+      {
+        day: "D2",
+        date: "9/26 周六",
+        title: "吉萨、Saqqara、Dahshur",
+        city: "吉萨与孟菲斯墓葬区",
+        coords: [29.9773, 31.1325],
+        morning: "吉萨金字塔群和狮身人面像。建议包车或导游。",
+        afternoon: "Saqqara 和 Dahshur 只抓主线，不求面面俱到。",
+        evening: "回酒店休息。",
+        tags: ["金字塔线", "建议包车", "高热量日"],
+        places: [
+          { id: "cruise-giza", name: "吉萨金字塔群", coords: [29.9773, 31.1325] },
+          { id: "cruise-sphinx", name: "狮身人面像", coords: [29.9753, 31.1376] },
+          { id: "cruise-saqqara", name: "Saqqara", coords: [29.8713, 31.2165] },
+          { id: "cruise-dahshur", name: "Dahshur", coords: [29.8069, 31.2086] },
+        ],
+      },
+      {
+        day: "D3",
+        date: "9/27 周日",
+        title: "开罗城市线，晚飞阿斯旺",
+        city: "开罗到阿斯旺",
+        coords: [30.0444, 31.2357],
+        morning: "开罗城市线只选一条：老开罗、伊斯兰开罗或文明博物馆，不再全收。",
+        afternoon: "留出回酒店取行李和去机场的时间。",
+        evening: "晚飞阿斯旺，抵达后入住。",
+        tags: ["开罗城市", "夜飞", "留白"],
+        places: [
+          { id: "cruise-old-cairo", name: "老开罗", coords: [30.0061, 31.2308] },
+          { id: "cruise-cairo-airport", name: "开罗机场", coords: [30.1219, 31.4056] },
+          { id: "cruise-aswan-arrive", name: "阿斯旺", coords: [24.0889, 32.8998] },
+        ],
+      },
+      {
+        day: "D4",
+        date: "9/28 周一",
+        title: "阿布辛贝一日往返，继续住阿斯旺",
+        city: "阿布辛贝",
+        coords: [22.3372, 31.6258],
+        morning: "清晨出发前往阿布辛贝，把它当成这段最重要的高光。",
+        afternoon: "返回阿斯旺，不再加重内容。",
+        evening: "回酒店早点睡，为第二天上船做准备。",
+        tags: ["阿布辛贝", "早起", "文明高光"],
+        places: [
+          { id: "cruise-abu-simbel", name: "阿布辛贝", coords: [22.3372, 31.6258] },
+          { id: "cruise-aswan-back", name: "阿斯旺", coords: [24.0889, 32.8998] },
+        ],
+      },
+      {
+        day: "D5",
+        date: "9/29 周二",
+        title: "菲莱神庙，上船开启邮轮",
+        city: "阿斯旺",
+        coords: [24.025, 32.8841],
+        morning: "看菲莱神庙，之后办理登船。",
+        afternoon: "正式上船，在甲板上把节奏放慢。若船期顺，会开始向 Kom Ombo 航行。",
+        evening: "把这晚当成进入邮轮生活的第一晚，不再加城市项目。",
+        tags: ["Philae", "登船", "邮轮 1/3"],
+        places: [
+          { id: "cruise-philae", name: "Philae Temple", coords: [24.025, 32.8841] },
+          { id: "cruise-ship-aswan", name: "尼罗河邮轮", coords: [24.0908, 32.8984] },
+        ],
+      },
+      {
+        day: "D6",
+        date: "9/30 周三",
+        title: "Kom Ombo、Edfu 与航行日",
+        city: "尼罗河上",
+        coords: [24.4529, 32.9283],
+        morning: "船停 Kom Ombo，顺路下船参观。",
+        afternoon: "继续航行并看 Edfu。其余时间留给甲板、发呆和看尼罗河两岸。",
+        evening: "继续住船上。比起包车北上，这一天的身体感会好很多。",
+        tags: ["Kom Ombo", "Edfu", "邮轮 2/3"],
+        places: [
+          { id: "cruise-kom-ombo", name: "Kom Ombo", coords: [24.4529, 32.9283] },
+          { id: "cruise-edfu", name: "Edfu", coords: [24.9781, 32.8735] },
+          { id: "cruise-ship-middle", name: "尼罗河邮轮", coords: [25.15, 32.78] },
+        ],
+      },
+      {
+        day: "D7",
+        date: "10/1 周四",
+        title: "抵达卢克索，西岸核心",
+        city: "卢克索",
+        coords: [25.7402, 32.6014],
+        morning: "船到卢克索后，抓西岸核心：帝王谷、哈特谢普苏特，状态好再加 Medinet Habu。",
+        afternoon: "回船或酒店休息，别把西岸排成拉练。",
+        evening: "继续住船上或按船公司安排夜泊卢克索。",
+        tags: ["西岸", "邮轮 3/3", "核心点"],
+        places: [
+          { id: "cruise-valley-kings", name: "帝王谷", coords: [25.7402, 32.6014] },
+          { id: "cruise-hatshepsut", name: "哈特谢普苏特神庙", coords: [25.7386, 32.6066] },
+          { id: "cruise-medinet", name: "Medinet Habu", coords: [25.7195, 32.6006] },
+        ],
+      },
+      {
+        day: "D8",
+        date: "10/2 周五",
+        title: "下船，Karnak 和 Luxor Temple",
+        city: "卢克索",
+        coords: [25.7188, 32.6573],
+        morning: "下船后看 Karnak，保住东岸最重要的一站。",
+        afternoon: "午后回酒店或船上休息，再决定傍晚是否去卢克索神庙。",
+        evening: "卢克索神庙作为可选项，不必为了完成度硬冲。",
+        tags: ["Karnak", "Luxor Temple", "缓冲"],
+        places: [
+          { id: "cruise-karnak", name: "Karnak", coords: [25.7188, 32.6573] },
+          { id: "cruise-luxor-temple", name: "Luxor Temple", coords: [25.6995, 32.6391] },
+        ],
+      },
+      {
+        day: "D9",
+        date: "10/3 周六",
+        title: "卢克索去红海",
+        city: "红海",
+        coords: [27.2579, 33.8116],
+        morning: "从卢克索前往 Hurghada / Soma Bay，优先包车直达。",
+        afternoon: "入住海边酒店，不排项目。",
+        evening: "正式切到度假段。",
+        tags: ["转场", "红海", "休息"],
+        places: [{ id: "cruise-red-sea-arrive", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] }],
+      },
+      {
+        day: "D10",
+        date: "10/4 周日",
+        title: "红海完整日",
+        city: "红海",
+        coords: [27.2579, 33.8116],
+        morning: "出海、浮潜或潜水。",
+        afternoon: "海边、泳池、SPA，不再加别的点。",
+        evening: "海边晚饭。",
+        tags: ["潜水", "完整休息日", "红海"],
+        places: [{ id: "cruise-red-sea-1", name: "红海海岸", coords: [27.2579, 33.8116] }],
+      },
+      {
+        day: "D11",
+        date: "10/5 周一",
+        title: "红海完整日 2",
+        city: "红海",
+        coords: [27.2579, 33.8116],
+        morning: "继续海边恢复，或补一个轻量海上项目。",
+        afternoon: "继续留在酒店和海边，不再赶回开罗。",
+        evening: "早点休息，为 10/6 早班机回开罗做准备。",
+        tags: ["红海", "完整休息日", "返程准备"],
+        places: [
+          { id: "cruise-red-sea-2", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] },
+        ],
+      },
+      {
+        day: "D12",
+        date: "10/6 周二",
+        title: "早班机回开罗，15:00 返程",
+        city: "返程",
+        coords: [30.1219, 31.4056],
+        morning: "从红海飞开罗，优先选 07:40 或 09:45 到达 CAI 的航班，给重新值机和出境留余量。",
+        afternoon: "15:00 从开罗起飞，经阿布扎比转机。",
+        evening: "飞行途中，10/7 国内落地。",
+        tags: ["早班机", "开罗机场", "10/7 到家"],
+        places: [
+          { id: "cruise-red-sea-final", name: "Hurghada / Soma Bay", coords: [27.2579, 33.8116] },
+          { id: "cruise-cairo-airport-final", name: "开罗机场", coords: [30.1219, 31.4056] },
+        ],
+      },
+    ],
+  },
 };
 
-const planOrder = ["abu", "doubao", "lean"];
+const planOrder = ["abu", "doubao", "lean", "cruise"];
 const planMenuLabels = {
-  abu: "推荐行程",
-  doubao: "原 C",
-  lean: "无阿布辛贝",
+  abu: "推荐方案",
+  doubao: "豆包方案",
+  lean: "加马特鲁",
+  cruise: "坐邮轮",
 };
 
 const comparisonMeta = {
   abu: {
-    label: "A 新推荐",
+    label: "推荐方案",
     shortName: "开罗 2.5 天 + 阿布辛贝",
+    subtitle: "高光最完整，节奏最稳",
     metrics: [
       ["开罗", "2.5 天"],
       ["红海", "约 3 天"],
@@ -615,17 +856,16 @@ const comparisonMeta = {
     cons: ["10/6 需要国内航班衔接国际航班", "10/3 卢克索到红海会吃掉上午", "9/27 晚飞阿斯旺要看航班"],
     notes: ["10/6 优先选 07:40 或 09:45 到达 CAI", "10:10 到达可用但余量更薄", "开罗城市日只选一条主线"],
     stays: [
-      ["开罗", 2.5],
-      ["阿斯旺", 1],
-      ["阿布辛贝", 0.5],
-      ["Kom Ombo / Edfu", 0.5],
-      ["卢克索", 2],
-      ["红海", 3],
+      ["开罗", 2, "2 晚"],
+      ["阿斯旺", 2, "2 晚"],
+      ["卢克索", 2, "2 晚"],
+      ["红海", 3, "3 晚"],
     ],
   },
   doubao: {
-    label: "B 原 C",
-    shortName: "豆包修正版",
+    label: "豆包方案",
+    shortName: "压缩开罗换红海完整度",
+    subtitle: "开罗更短，红海更满",
     metrics: [
       ["开罗", "1.5 天"],
       ["红海", "约 3 天"],
@@ -636,31 +876,53 @@ const comparisonMeta = {
     cons: ["开罗被压缩", "9/26 金字塔线后晚飞阿斯旺较硬", "落地日 GEM 容错不高"],
     notes: ["适合更重视红海完整度", "9/26 建议包车和导游", "若落地疲劳明显，D1 GEM 体验会打折"],
     stays: [
-      ["开罗", 1.5],
-      ["阿斯旺", 1],
-      ["阿布辛贝", 0.5],
-      ["Kom Ombo / Edfu", 0.5],
-      ["卢克索", 2],
-      ["红海", 3],
+      ["开罗", 2, "2 晚"],
+      ["阿斯旺", 2, "2 晚"],
+      ["卢克索", 2, "2 晚"],
+      ["红海", 3, "3 晚"],
     ],
   },
   lean: {
-    label: "C 无阿布辛贝",
-    shortName: "舒适版",
+    label: "加马特鲁",
+    shortName: "马特鲁 + 阿布辛贝 + 两段海边",
+    subtitle: "马特鲁换气，海边两晚",
     metrics: [
-      ["开罗", "约 3 天"],
-      ["红海", "约 3 天"],
-      ["阿布辛贝", "放弃"],
-      ["压力点", "最低"],
+      ["开罗", "约 2 天"],
+      ["马特鲁", "1.5 天"],
+      ["阿布辛贝", "保留"],
+      ["压力点", "9/28 与 10/2"],
     ],
-    pros: ["整体最松", "红海恢复最稳定", "卢克索有弹性日"],
-    cons: ["放弃阿斯旺和阿布辛贝", "第一次埃及完整度降低", "以后单独补阿布辛贝概率低"],
-    notes: ["Dendera 可按体力替换为卢克索慢走", "适合优先保护体力和体验质量", "如果阿布辛贝是执念，这版心理遗憾最大"],
+    pros: ["用马特鲁打断连续古迹输入", "阿布辛贝仍然保住", "红海仍有两整天左右"],
+    cons: ["转场最多", "马特鲁和阿斯旺之间衔接较硬", "卢克索只能抓核心不能贪多"],
+    notes: ["优先争取开罗飞马特鲁与红海早班机回 CAI", "Edfu / Esna 只当顺路加分项", "若体力下滑，可直接砍掉丹德拉"],
     stays: [
-      ["开罗", 3],
-      ["卢克索", 2],
-      ["Dendera", 0.5],
-      ["红海", 3],
+      ["开罗", 2, "2 晚"],
+      ["马特鲁", 1, "1 晚"],
+      ["阿斯旺", 1, "1 晚"],
+      ["阿布辛贝", 1, "1 晚"],
+      ["卢克索", 2, "2 晚"],
+      ["红海", 3, "3 晚"],
+    ],
+  },
+  cruise: {
+    label: "坐邮轮",
+    shortName: "阿斯旺到卢克索改邮轮",
+    subtitle: "用邮轮减压，南线更柔",
+    metrics: [
+      ["开罗", "2.5 天"],
+      ["邮轮", "3 晚"],
+      ["阿布辛贝", "保留"],
+      ["压力点", "更低"],
+    ],
+    pros: ["把南线转场改成水上移动", "连续古迹之间有航行和甲板休息", "仍保住阿布辛贝与红海"],
+    cons: ["需要接受部分支线点位让位给船期", "预算通常高于纯陆路", "船期会限制每日自由度"],
+    notes: ["这趟 12 天更适合 3 晚邮轮而不是 4 晚", "Kom Ombo 与 Edfu 由船期自然串联", "10/6 仍按红海早班机回 CAI 处理"],
+    stays: [
+      ["开罗", 2, "2 晚"],
+      ["阿斯旺", 2, "2 晚"],
+      ["邮轮", 3, "3 晚"],
+      ["卢克索", 1, "1 晚"],
+      ["红海", 3, "3 晚"],
     ],
   },
 };
@@ -735,6 +997,22 @@ const placeInsights = {
   Dahshur: {
     description: "达舒尔以弯曲金字塔和红色金字塔闻名，游客密度通常低于吉萨，荒漠感更明显。",
     reason: "推荐和 Saqqara 组合，能看到金字塔从实验走向成熟的过程，摄影和空间感都更好。",
+  },
+  "Marsa Matruh": {
+    description: "埃及北海岸的地中海海边城市，重点不是城市本身，而是海水颜色、空旷感和与南线完全不同的旅行情绪。",
+    reason: "推荐给害怕连续神庙审美疲劳的人，作为中段换气比继续叠古迹更有效。",
+  },
+  "Cleopatra Beach": {
+    description: "马特鲁代表性的海滩点，海水颜色和礁石轮廓辨识度都很高。",
+    reason: "推荐在马特鲁只抓一两个最想看的海点，不要把海滩当景点清单来跑。",
+  },
+  "Ageeba Beach": {
+    description: "以海湾形状和高低落差视角著称，是马特鲁很常被提到的海岸线之一。",
+    reason: "推荐半日停留，和 Sea Eye、Cleopatra Beach 只择重点，不建议全打卡。",
+  },
+  "尼罗河邮轮": {
+    description: "阿斯旺到卢克索的经典移动方式，把 Kom Ombo、Edfu 和沿岸生活场景自然串进旅程。",
+    reason: "推荐给不想把南线过成连续车程的人，用航行时间把身体和审美都缓下来。",
   },
   "Philae Temple": {
     description: "菲莱神庙位于阿斯旺水域中的岛上，以伊西斯崇拜和水上抵达体验著名，空间氛围很柔和。",
@@ -861,6 +1139,31 @@ const placeNameMeta = {
     en: "Dahshur",
     local: "دهشور",
     duration: "1-1.5h",
+  },
+  "Marsa Matruh": {
+    zh: "马特鲁",
+    en: "Marsa Matruh",
+    abbr: "MUH",
+    local: "مرسى مطروح",
+    duration: "0.5-2 天",
+  },
+  "Cleopatra Beach": {
+    zh: "克娄巴特拉海滩",
+    en: "Cleopatra Beach",
+    local: "شاطئ كليوباترا",
+    duration: "1-2h",
+  },
+  "Ageeba Beach": {
+    zh: "阿吉巴海滩",
+    en: "Ageeba Beach",
+    local: "شاطئ عجيبة",
+    duration: "1-2h",
+  },
+  "尼罗河邮轮": {
+    zh: "尼罗河邮轮",
+    en: "Nile Cruise",
+    local: "رحلة نيلية",
+    duration: "3-4 晚",
   },
   老开罗: {
     zh: "老开罗",
@@ -1000,60 +1303,53 @@ function escapeHtml(value) {
 function renderComparison() {
   if (!comparisonOverview || !comparisonTable) return;
 
-  comparisonOverview.innerHTML = planOrder.map((planKey) => renderPlanComparisonCard(planKey)).join("");
+  comparisonOverview.innerHTML = "";
   comparisonTable.innerHTML = renderDailyComparisonTable();
   updateComparisonActive(activePlanKey);
 }
 
 function renderPlanComparisonCard(planKey) {
-  const plan = plans[planKey];
   const meta = comparisonMeta[planKey];
   const maxStay = Math.max(...Object.values(comparisonMeta).flatMap((entry) => entry.stays.map(([, days]) => days)));
+  const keyPoints = [
+    ...meta.pros.slice(0, 2).map((item) => `保：${item}`),
+    ...meta.cons.slice(0, 2).map((item) => `换：${item}`),
+  ];
 
   return `
     <article class="comparison-card" data-compare-plan="${escapeHtml(planKey)}">
       <div class="comparison-card-head">
-        <div>
+        <div class="comparison-card-copy">
           <p>${escapeHtml(meta.label)}</p>
           <h3>${escapeHtml(meta.shortName)}</h3>
+          <span>${escapeHtml(meta.subtitle ?? "")}</span>
         </div>
-        <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}">查看</button>
+        <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}" aria-label="查看地图中的 ${escapeHtml(meta.label)}">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 21s-5.5-5.3-5.5-10A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 17.5 11c0 4.7-5.5 10-5.5 10Zm0-7.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       </div>
-      <div class="metric-strip">
-        ${meta.metrics
-          .map(
-            ([name, value]) => `
-              <div>
-                <span>${escapeHtml(name)}</span>
-                <strong>${escapeHtml(value)}</strong>
-              </div>
-            `
-          )
-          .join("")}
-      </div>
-      <div class="pros-cons-grid">
-        <section>
-          <h4>Pros</h4>
-          <ul>${meta.pros.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-        </section>
-        <section>
-          <h4>Cons</h4>
-          <ul>${meta.cons.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-        </section>
-      </div>
+      <section class="key-list">
+        <h4>关键差异</h4>
+        <ul>${keyPoints.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </section>
       <section class="note-list">
-        <h4>注意事项</h4>
-        <ul>${meta.notes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        <h4>注意</h4>
+        <ul>${meta.notes.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
       </section>
       <section class="stay-list">
-        <h4>城市停留</h4>
+        <h4>住宿天数</h4>
         ${meta.stays
           .map(
-            ([city, days]) => `
+            ([city, days, label]) => `
               <div class="stay-row">
                 <span>${escapeHtml(city)}</span>
                 <div class="stay-meter" aria-hidden="true"><i style="width: ${(days / maxStay) * 100}%"></i></div>
-                <strong>${escapeHtml(days)} 天</strong>
+                <strong>${escapeHtml(label ?? `${days} 晚`)}</strong>
               </div>
             `
           )
@@ -1061,6 +1357,48 @@ function renderPlanComparisonCard(planKey) {
       </section>
     </article>
   `;
+}
+
+function renderPlanSummaryCell(planKey) {
+  const meta = comparisonMeta[planKey];
+  const maxStay = Math.max(...Object.values(comparisonMeta).flatMap((entry) => entry.stays.map(([, days]) => days)));
+  return {
+    intro: `
+      <div class="comparison-card-head">
+        <div class="comparison-card-copy">
+          <p>${escapeHtml(meta.label)}</p>
+          <h3>${escapeHtml(meta.shortName)}</h3>
+          <span>${escapeHtml(meta.subtitle ?? "")}</span>
+        </div>
+        <button class="compare-select-button" type="button" data-plan="${escapeHtml(planKey)}" aria-label="查看地图中的 ${escapeHtml(meta.label)}">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 21s-5.5-5.3-5.5-10A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 17.5 11c0 4.7-5.5 10-5.5 10Zm0-7.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+    `,
+    pros: `<ul class="comparison-bullet-list">${meta.pros.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`,
+    cons: `<ul class="comparison-bullet-list">${meta.cons.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`,
+    notes: `<ul class="comparison-bullet-list">${meta.notes.slice(0, 2).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`,
+    stays: `
+      <div class="stay-list">
+        ${meta.stays
+          .map(
+            ([city, days, label]) => `
+              <div class="stay-row">
+                <span>${escapeHtml(city)}</span>
+                <div class="stay-meter" aria-hidden="true"><i style="width: ${(days / maxStay) * 100}%"></i></div>
+                <strong>${escapeHtml(label ?? `${days} 晚`)}</strong>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    `,
+  };
 }
 
 function renderDailyComparisonTable() {
@@ -1072,24 +1410,77 @@ function renderDailyComparisonTable() {
 
   return `
     <table class="comparison-table">
-      <thead>
-        <tr>
-          <th scope="col">日期</th>
+      <tbody>
+        <tr class="comparison-summary-row comparison-intro-row">
+          <th scope="row">
+            <strong>简介</strong>
+          </th>
           ${planOrder
             .map(
               (planKey) => `
-                <th scope="col" data-compare-plan="${escapeHtml(planKey)}">
-                  <button class="compare-plan-heading" type="button" data-plan="${escapeHtml(planKey)}">
-                    <span>${escapeHtml(comparisonMeta[planKey].label)}</span>
-                    <strong>${escapeHtml(comparisonMeta[planKey].shortName)}</strong>
-                  </button>
-                </th>
+                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
+                  ${renderPlanSummaryCell(planKey).intro}
+                </td>
               `
             )
             .join("")}
         </tr>
-      </thead>
-      <tbody>
+        <tr class="comparison-summary-row">
+          <th scope="row">
+            <strong>优点</strong>
+          </th>
+          ${planOrder
+            .map(
+              (planKey) => `
+                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
+                  ${renderPlanSummaryCell(planKey).pros}
+                </td>
+              `
+            )
+            .join("")}
+        </tr>
+        <tr class="comparison-summary-row">
+          <th scope="row">
+            <strong>缺点</strong>
+          </th>
+          ${planOrder
+            .map(
+              (planKey) => `
+                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
+                  ${renderPlanSummaryCell(planKey).cons}
+                </td>
+              `
+            )
+            .join("")}
+        </tr>
+        <tr class="comparison-summary-row">
+          <th scope="row">
+            <strong>注意</strong>
+          </th>
+          ${planOrder
+            .map(
+              (planKey) => `
+                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
+                  ${renderPlanSummaryCell(planKey).notes}
+                </td>
+              `
+            )
+            .join("")}
+        </tr>
+        <tr class="comparison-summary-row">
+          <th scope="row">
+            <strong>住宿</strong>
+          </th>
+          ${planOrder
+            .map(
+              (planKey) => `
+                <td data-compare-plan="${escapeHtml(planKey)}" class="comparison-summary-td">
+                  ${renderPlanSummaryCell(planKey).stays}
+                </td>
+              `
+            )
+            .join("")}
+        </tr>
         ${dates
           .map(
             ({ day, date, index }) => `
@@ -1124,15 +1515,16 @@ function renderDailyComparisonCell(planKey, dayIndex) {
 }
 
 function updateComparisonActive(planKey) {
-  document.querySelectorAll("[data-compare-plan]").forEach((node) => {
-    node.classList.toggle("is-active", node.dataset.comparePlan === planKey);
-  });
+  return planKey;
 }
 
 function getTransitNote(day) {
   const text = `${day.title} ${day.city} ${day.morning} ${day.afternoon} ${day.evening}`;
   if (text.includes("开罗城市日") && text.includes("阿斯旺")) {
     return "跨城交通：开罗飞阿斯旺约 1h20m；包车约 10-12h，不建议当天这样走。";
+  }
+  if (text.includes("马特鲁")) {
+    return "跨城交通：开罗到马特鲁若有直飞最省心；若走陆路通常要 4-6h，建议把它当整段转场来算。";
   }
   if (text.includes("晚飞卢克索")) {
     return "跨城交通：开罗飞卢克索约 1h；若包车约 8-9h，不建议当天这样走。";
@@ -1145,6 +1537,9 @@ function getTransitNote(day) {
   }
   if (text.includes("阿斯旺包车北上卢克索")) {
     return "跨城交通：阿斯旺到卢克索包车约 4-5h；加 Kom Ombo、Edfu 停留后按全天转场估算。";
+  }
+  if (text.includes("邮轮")) {
+    return "经典尼罗河邮轮多为 Aswan-Luxor 3-4 晚，Kom Ombo 和 Edfu 通常由船期顺路覆盖，体感会比纯陆路柔和很多。";
   }
   if (text.includes("卢克索到红海") || text.includes("上午去红海")) {
     return "跨城交通：卢克索到红海包车约 4.5-5h；若绕到机场飞行衔接通常不如包车直接。";

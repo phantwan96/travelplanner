@@ -1,11 +1,11 @@
 :root {
   color-scheme: light;
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --surface-soft: #f7f7f7;
-  --ink: #222222;
-  --muted: #717171;
-  --line: #dddddd;
+  --bg: #fcfbf8;
+  --surface: #fffdf9;
+  --surface-soft: #f4f1ea;
+  --ink: #1f1d1a;
+  --muted: #756f68;
+  --line: #ddd6ca;
   --accent: #ff385c;
   --accent-dark: #e31c5f;
   --route: #de3151;
@@ -725,7 +725,7 @@ h1 {
 }
 
 .comparison-dialog {
-  width: min(1180px, calc(100% - 48px));
+  width: min(1800px, calc(100% - 24px));
   max-height: calc(100dvh - 48px);
   padding: 0;
   overflow: hidden;
@@ -744,7 +744,7 @@ h1 {
   position: relative;
   max-height: calc(100dvh - 48px);
   overflow: auto;
-  padding: 26px;
+  padding: 22px;
   background: var(--surface);
 }
 
@@ -781,53 +781,38 @@ h1 {
 }
 
 .comparison-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
-  gap: 16px;
-  align-items: end;
-  margin: 0 48px 16px 0;
+  display: block;
+  margin: 0 48px 12px 0;
 }
 
 .comparison-heading h2 {
   margin-bottom: 0;
-  font-size: var(--type-h2);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
+  font-size: clamp(28px, 2.4vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  font-weight: 800;
 }
 
-.comparison-heading p:last-child {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: var(--type-caption1);
-  line-height: 1.65;
+.comparison-stack {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.96), rgb(255 253 249 / 0.98)),
+    var(--surface);
+  box-shadow: 0 18px 44px rgb(34 28 18 / 0.06);
 }
 
 .comparison-overview {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.comparison-card {
-  min-width: 0;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  box-shadow: var(--shadow);
-}
-
-.comparison-card.is-active {
-  border-color: color-mix(in srgb, var(--accent) 64%, var(--line));
+  display: none;
 }
 
 .comparison-card-head {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: start;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 0;
 }
 
 .comparison-card-head p,
@@ -836,16 +821,34 @@ h1 {
   margin: 0;
 }
 
+.comparison-card-copy {
+  min-width: 0;
+}
+
 .comparison-card-head p {
   color: var(--accent-dark);
-  font-size: var(--type-caption2);
+  font-size: 17px;
   font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .comparison-card-head h3 {
   margin-top: 4px;
-  font-size: var(--type-text2);
+  font-size: 15px;
+  line-height: 1.22;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: -0.02em;
+}
+
+.comparison-card-copy span {
+  display: block;
+  margin-top: 8px;
+  color: color-mix(in srgb, var(--ink) 92%, var(--muted));
+  font-size: 14px;
   line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
 .compare-select-button,
@@ -859,8 +862,21 @@ h1 {
 }
 
 .compare-select-button {
-  min-height: 34px;
-  padding: 0 12px;
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  background: color-mix(in srgb, var(--surface) 70%, white);
+  box-shadow: 0 4px 12px rgb(34 28 18 / 0.04);
+}
+
+.compare-select-button svg {
+  width: 18px;
+  height: 18px;
 }
 
 .compare-select-button:hover,
@@ -869,61 +885,14 @@ h1 {
   color: var(--accent-dark);
 }
 
-.metric-strip {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--line);
-}
-
-.metric-strip div {
-  min-width: 0;
-  padding: 10px;
-  background: var(--surface);
-}
-
-.metric-strip span {
-  display: block;
-  color: var(--muted);
-  font-size: var(--type-caption2);
-  font-weight: 800;
-}
-
-.metric-strip strong {
-  display: block;
-  margin-top: 5px;
-  font-size: var(--type-caption1);
-}
-
-.pros-cons-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.comparison-card h4 {
-  color: var(--accent-dark);
-  font-size: var(--type-caption2);
-  font-weight: 900;
-}
-
-.comparison-card ul {
+.comparison-bullet-list {
   display: grid;
   gap: 6px;
-  margin: 8px 0 0;
+  margin: 0;
   padding-left: 17px;
   color: var(--ink);
-  font-size: var(--type-caption1);
-  line-height: 1.45;
-}
-
-.note-list,
-.stay-list {
-  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.42;
 }
 
 .stay-list {
@@ -933,28 +902,30 @@ h1 {
 
 .stay-row {
   display: grid;
-  grid-template-columns: minmax(92px, 1fr) minmax(82px, 1.2fr) auto;
+  grid-template-columns: minmax(72px, 1fr) minmax(72px, 1fr) auto;
   gap: 8px;
   align-items: center;
-  font-size: var(--type-caption1);
+  font-size: 14px;
 }
 
 .stay-row span {
   min-width: 0;
   overflow-wrap: anywhere;
+  line-height: 1.25;
 }
 
 .stay-row strong {
   color: var(--accent-dark);
-  font-size: var(--type-caption2);
+  font-size: 13px;
   white-space: nowrap;
+  font-weight: 800;
 }
 
 .stay-meter {
-  height: 8px;
+  height: 6px;
   overflow: hidden;
   border-radius: 999px;
-  background: var(--surface-soft);
+  background: color-mix(in srgb, var(--surface-soft) 82%, white);
 }
 
 .stay-meter i {
@@ -966,22 +937,23 @@ h1 {
 
 .comparison-table-wrap {
   overflow: auto;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--surface) 90%, transparent);
-  box-shadow: var(--shadow);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .comparison-table {
   width: 100%;
   min-width: 940px;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .comparison-table th,
 .comparison-table td {
-  border-bottom: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
   vertical-align: top;
 }
 
@@ -1000,9 +972,13 @@ h1 {
 
 .comparison-table tbody th {
   width: 112px;
-  padding: 14px 12px;
-  background: var(--surface);
+  padding: 14px 14px;
+  background: color-mix(in srgb, var(--surface-soft) 56%, var(--surface));
   text-align: left;
+}
+
+.comparison-summary-row th {
+  width: 132px;
 }
 
 .comparison-table tbody th strong,
@@ -1012,7 +988,9 @@ h1 {
 
 .comparison-table tbody th strong {
   color: var(--accent-dark);
-  font-size: var(--type-text2);
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .comparison-table tbody th span {
@@ -1023,39 +1001,37 @@ h1 {
 }
 
 .comparison-table td {
-  width: 29%;
+  width: calc((100% - 132px) / 4);
   padding: 0;
 }
 
-.comparison-table th.is-active,
-.comparison-table td.is-active {
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
+.comparison-intro-row th,
+.comparison-intro-row td {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: color-mix(in srgb, var(--surface) 94%, white);
+  backdrop-filter: blur(12px);
 }
 
-.compare-plan-heading {
-  display: grid;
-  gap: 4px;
-  width: 100%;
-  min-height: 58px;
-  padding: 9px 10px;
-  text-align: left;
+.comparison-summary-row th,
+.comparison-summary-row td {
+  background: var(--surface);
 }
 
-.compare-plan-heading span {
-  color: var(--accent-dark);
-  font-size: var(--type-caption2);
+.comparison-summary-td {
+  padding: 16px 16px 14px;
 }
 
-.compare-plan-heading strong {
-  font-size: var(--type-caption1);
-  line-height: 1.2;
+.comparison-card-inline {
+  min-width: 0;
 }
 
 .comparison-day-cell {
   display: grid;
-  gap: 5px;
+  gap: 6px;
   min-height: 98px;
-  padding: 12px;
+  padding: 14px 16px;
 }
 
 .comparison-day-cell p,
@@ -1066,18 +1042,20 @@ h1 {
 
 .comparison-day-cell p {
   color: var(--accent-dark);
-  font-size: var(--type-caption2);
+  font-size: 13px;
   font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .comparison-day-cell strong {
-  font-size: var(--type-caption1);
-  line-height: 1.35;
+  font-size: 15px;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
 }
 
 .comparison-day-cell span {
   color: var(--muted);
-  font-size: var(--type-caption2);
+  font-size: 13px;
   line-height: 1.35;
 }
 
@@ -1165,8 +1143,7 @@ h1 {
   }
 
   .comparison-heading,
-  .comparison-overview,
-  .pros-cons-grid {
+  .comparison-overview {
     grid-template-columns: 1fr;
   }
 

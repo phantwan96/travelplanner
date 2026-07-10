@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>埃及 2026 十一行程路书</title>
     <link rel="stylesheet" href="./vendor/ol.css" />
-    <link rel="stylesheet" href="./styles.css?v=16" />
+    <link rel="stylesheet" href="./styles.css?v=17" />
   </head>
   <body>
     <main class="route-workspace">
@@ -14,7 +14,7 @@
           <div class="header-copy">
             <h1>2026 埃及</h1>
             <p class="trip-meta">09.25 至 10.07 · 13 天 12 晚</p>
-            <p class="trip-brief">开罗进出，走阿斯旺、阿布辛贝、卢克索，最后在红海收尾。</p>
+            <p class="trip-brief">开罗进出，主线含阿斯旺、阿布辛贝、卢克索与红海，并对比加马特鲁变体。</p>
           </div>
           <div class="hero-actions" aria-label="行程工具">
             <details class="flight-details">
@@ -40,18 +40,21 @@
                 aria-haspopup="listbox"
                 aria-expanded="false"
               >
-                推荐行程
+                推荐方案
                 <span class="menu-caret" aria-hidden="true"></span>
               </button>
               <div class="plan-menu-list" id="planMenuList" role="listbox" hidden>
                 <button class="plan-menu-option is-active" type="button" role="option" aria-selected="true" data-plan="abu">
-                  推荐行程
+                  推荐方案
                 </button>
                 <button class="plan-menu-option" type="button" role="option" aria-selected="false" data-plan="doubao">
-                  原 C
+                  豆包方案
                 </button>
                 <button class="plan-menu-option" type="button" role="option" aria-selected="false" data-plan="lean">
-                  无阿布辛贝
+                  加马特鲁
+                </button>
+                <button class="plan-menu-option" type="button" role="option" aria-selected="false" data-plan="cruise">
+                  坐邮轮
                 </button>
                 <button class="plan-menu-compare" id="compareToggleButton" type="button" aria-haspopup="dialog" aria-controls="comparisonDialog">
                   对比
@@ -59,7 +62,7 @@
               </div>
             </div>
           </div>
-          <h2 id="planTitle" class="visually-hidden">A. 开罗 2.5 天 + 阿布辛贝</h2>
+          <h2 id="planTitle" class="visually-hidden">A. 推荐方案</h2>
         </header>
 
         <section class="timeline-section" aria-label="完整每日行程">
@@ -97,16 +100,14 @@
         <section class="comparison-section" id="comparisonSection">
           <div class="comparison-heading">
             <div>
-              <p class="kicker">Plan Matrix</p>
               <h2 id="comparisonTitle">完整方案对比</h2>
             </div>
-            <p>
-              纵轴按日期，横轴按方案。城市停留按 0.5 天粒度估算，剔除纯交通和返程等待时间。
-            </p>
           </div>
 
-          <div id="comparisonOverview" class="comparison-overview" aria-label="方案优劣势、注意事项和停留时间"></div>
-          <div id="comparisonTable" class="comparison-table-wrap" aria-label="按日期对比三套方案"></div>
+          <div class="comparison-stack">
+            <div id="comparisonOverview" class="comparison-overview" aria-label="方案优劣势、注意事项和停留时间"></div>
+            <div id="comparisonTable" class="comparison-table-wrap" aria-label="按日期对比四套方案"></div>
+          </div>
         </section>
       </div>
     </dialog>
@@ -116,6 +117,6 @@
     </footer>
 
     <script src="./vendor/ol.js"></script>
-    <script src="./app.js?v=17"></script>
+    <script src="./app.js?v=19"></script>
   </body>
 </html>
